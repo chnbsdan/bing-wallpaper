@@ -1,4 +1,11 @@
-// js/preview.js
+// js/preview.js - 完整修复版
+console.log('✅ preview.js 加载中...');
+
+// 依赖检查
+if (typeof getImageUrl === 'undefined') {
+    console.error('❌ getImageUrl 未定义，请确保 config.js 已加载');
+}
+
 var overlay = document.getElementById('overlay');
 var imageContainer = document.getElementById('imageContainer');
 var previewImg = document.getElementById('previewImg');
@@ -6,10 +13,13 @@ var previewTitle = document.getElementById('previewTitle');
 var previewDate = document.getElementById('previewDate');
 var detailLink = document.getElementById('detailLink');
 
-// ★★★ 分辨率面板元素 ★★★
+// 分辨率面板
 var resolutionPanel = document.getElementById('resolutionPanel');
 var resolutionOverlay = document.getElementById('resolutionOverlay');
 var currentDownloadUrl = '';
+
+console.log('resolutionPanel:', resolutionPanel);
+console.log('resolutionOverlay:', resolutionOverlay);
 
 var scale = 1, minScale = 0.3, maxScale = 5,
     translateX = 0, translateY = 0,
@@ -46,7 +56,6 @@ function closePreview() {
     overlay.classList.remove('active');
     document.body.style.overflow = 'auto';
     closeDetailPanel();
-    // ★★★ 关闭分辨率面板 ★★★
     if (resolutionPanel) resolutionPanel.classList.remove('active');
     if (resolutionOverlay) resolutionOverlay.classList.remove('active');
 }
@@ -108,33 +117,68 @@ function closeDetailPanel() {
     document.getElementById('detailOverlay').classList.remove('active');
 }
 
-// ===== ★★★ 分辨率下载功能 ★★★ =====
-document.getElementById('downloadBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    var url = getImageUrl(currentPreviewItem.jpg || currentPreviewItem.webp || '');
-    if (!url) {
-        console.warn('没有图片链接');
-        return;
-    }
-    currentDownloadUrl = url;
-    resolutionPanel.classList.add('active');
-    resolutionOverlay.classList.add('active');
-});
+// ===== ★★★ 分辨率下载（调试版） ★★★ =====
+var downloadBtn = document.getElementById('downloadBtn');
+console.log('downloadBtn:', downloadBtn);
 
-document.getElementById('resolutionClose').addEventListener('click', function() {
-    resolutionPanel.classList.remove('active');
-    resolutionOverlay.classList.remove('active');
-});
+if (downloadBtn) {
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('✅ 下载按钮被点击');
+        
+        if (!currentPreviewItem) {
+            console.warn('⚠️ currentPreviewItem 为空，请先打开一张图片');
+            return;
+        }
+        
+        var url = getImageUrl(currentPreviewItem.jpg || currentPreviewItem.webp || '');
+        console.log('📷 图片URL:', url);
+        
+        if (!url) {
+            console.warn('⚠️ 没有图片链接');
+            return;
+        }
+        
+        currentDownloadUrl = url;
+        console.log('📦 设置 currentDownloadUrl:', currentDownloadUrl);
+        
+        if (resolutionPanel) {
+            resolutionPanel.classList.add('active');
+            console.log('✅ 分辨率面板已打开');
+        } else {
+            console.error('❌ resolutionPanel 不存在');
+        }
+        
+        if (resolutionOverlay) {
+            resolutionOverlay.classList.add('active');
+        }
+    });
+} else {
+    console.error('❌ downloadBtn 不存在，请检查 HTML 中是否有 id="downloadBtn" 的元素');
+}
 
-resolutionOverlay.addEventListener('click', function() {
-    resolutionPanel.classList.remove('active');
-    resolutionOverlay.classList.remove('active');
-});
+// ===== 关闭分辨率面板 =====
+var resolutionClose = document.getElementById('resolutionClose');
+if (resolutionClose) {
+    resolutionClose.addEventListener('click', function() {
+        resolutionPanel.classList.remove('active');
+        resolutionOverlay.classList.remove('active');
+    });
+}
 
+if (resolutionOverlay) {
+    resolutionOverlay.addEventListener('click', function() {
+        resolutionPanel.classList.remove('active');
+        resolutionOverlay.classList.remove('active');
+    });
+}
+
+// ===== 分辨率按钮点击下载 =====
 document.querySelectorAll('.resolution-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
         var width = this.getAttribute('data-width');
         var height = this.getAttribute('data-height');
+        console.log('📥 下载分辨率:', width + 'x' + height);
         downloadWithResolution(currentDownloadUrl, width, height);
         resolutionPanel.classList.remove('active');
         resolutionOverlay.classList.remove('active');
@@ -143,7 +187,7 @@ document.querySelectorAll('.resolution-btn').forEach(function(btn) {
 
 function downloadWithResolution(url, width, height) {
     if (!url) {
-        console.warn('URL 为空');
+        console.warn('⚠️ URL 为空');
         return;
     }
     var downloadUrl = url;
@@ -151,6 +195,7 @@ function downloadWithResolution(url, width, height) {
         var baseUrl = url.split('&')[0];
         downloadUrl = baseUrl + '&w=' + width + '&h=' + height;
     }
+    console.log('🔗 下载链接:', downloadUrl);
     var a = document.createElement('a');
     a.href = downloadUrl;
     a.download = 'wallpaper_' + width + 'x' + height + '.jpg';
@@ -189,3 +234,5 @@ document.addEventListener('keydown', function(e) {
 });
 
 bindPreviewEvents();
+
+console.log('✅ preview.js 加载完成');
