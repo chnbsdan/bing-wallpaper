@@ -6,15 +6,15 @@ var previewTitle = document.getElementById('previewTitle');
 var previewDate = document.getElementById('previewDate');
 var detailLink = document.getElementById('detailLink');
 
+// ★★★ 分辨率面板元素 ★★★
+var resolutionPanel = document.getElementById('resolutionPanel');
+var resolutionOverlay = document.getElementById('resolutionOverlay');
+var currentDownloadUrl = '';
+
 var scale = 1, minScale = 0.3, maxScale = 5,
     translateX = 0, translateY = 0,
     isDragging = false, startX = 0, startY = 0,
     lastTranslateX = 0, lastTranslateY = 0;
-
-// 分辨率面板
-var resolutionPanel = document.getElementById('resolutionPanel');
-var resolutionOverlay = document.getElementById('resolutionOverlay');
-var currentDownloadUrl = '';
 
 function openPreview(index) {
     if (!allData || allData.length === 0) return;
@@ -46,13 +46,15 @@ function closePreview() {
     overlay.classList.remove('active');
     document.body.style.overflow = 'auto';
     closeDetailPanel();
-    resolutionPanel.classList.remove('active');
-    resolutionOverlay.classList.remove('active');
+    // ★★★ 关闭分辨率面板 ★★★
+    if (resolutionPanel) resolutionPanel.classList.remove('active');
+    if (resolutionOverlay) resolutionOverlay.classList.remove('active');
 }
 
 function updateTransform() {
     previewImg.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')';
 }
+
 function resetZoom() {
     scale = 1;
     translateX = 0;
@@ -89,7 +91,7 @@ function bindPreviewEvents() {
     }, { passive: false });
 }
 
-// 详情面板
+// ===== 详情面板 =====
 function openDetailPanel() {
     if (!currentPreviewItem) return;
     document.getElementById('detailDate').textContent = currentPreviewItem.date || '-';
@@ -100,15 +102,20 @@ function openDetailPanel() {
     document.getElementById('detailPanel').classList.add('open');
     document.getElementById('detailOverlay').classList.add('active');
 }
+
 function closeDetailPanel() {
     document.getElementById('detailPanel').classList.remove('open');
     document.getElementById('detailOverlay').classList.remove('active');
 }
 
-// 下载按钮
-document.getElementById('downloadBtn').addEventListener('click', function() {
+// ===== ★★★ 分辨率下载功能 ★★★ =====
+document.getElementById('downloadBtn').addEventListener('click', function(e) {
+    e.preventDefault();
     var url = getImageUrl(currentPreviewItem.jpg || currentPreviewItem.webp || '');
-    if (!url) return;
+    if (!url) {
+        console.warn('没有图片链接');
+        return;
+    }
     currentDownloadUrl = url;
     resolutionPanel.classList.add('active');
     resolutionOverlay.classList.add('active');
@@ -135,6 +142,10 @@ document.querySelectorAll('.resolution-btn').forEach(function(btn) {
 });
 
 function downloadWithResolution(url, width, height) {
+    if (!url) {
+        console.warn('URL 为空');
+        return;
+    }
     var downloadUrl = url;
     if (url.indexOf('th?id=') !== -1) {
         var baseUrl = url.split('&')[0];
@@ -149,7 +160,7 @@ function downloadWithResolution(url, width, height) {
     document.body.removeChild(a);
 }
 
-// 事件绑定
+// ===== 事件绑定 =====
 document.getElementById('closeBtn').addEventListener('click', closePreview);
 document.getElementById('prevPreviewBtn').addEventListener('click', function(e) {
     e.stopPropagation();
@@ -162,9 +173,11 @@ document.getElementById('nextPreviewBtn').addEventListener('click', function(e) 
 document.getElementById('detailBtn').addEventListener('click', openDetailPanel);
 document.getElementById('detailPanelClose').addEventListener('click', closeDetailPanel);
 document.getElementById('detailOverlay').addEventListener('click', closeDetailPanel);
+
 overlay.addEventListener('click', function(e) {
     if (e.target === overlay) closePreview();
 });
+
 document.addEventListener('keydown', function(e) {
     if (!overlay.classList.contains('active')) return;
     if (e.key === 'Escape') closePreview();
