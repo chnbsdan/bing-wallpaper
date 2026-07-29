@@ -1,132 +1,178 @@
-// ==========================================================
-// preview.js - 完整替换版本 (点击直接下载 4K 原图，去掉了烦人的分辨率弹窗)
-// ==========================================================
+// js/preview.js
+var overlay = document.getElementById('overlay');
+var imageContainer = document.getElementById('imageContainer');
+var previewImg = document.getElementById('previewImg');
+var previewTitle = document.getElementById('previewTitle');
+var previewDate = document.getElementById('previewDate');
+var detailLink = document.getElementById('detailLink');
 
-(function() {
-    'use strict';
+var scale = 1, minScale = 0.3, maxScale = 5,
+    translateX = 0, translateY = 0,
+    isDragging = false, startX = 0, startY = 0,
+    lastTranslateX = 0, lastTranslateY = 0;
 
-    console.log('✅ preview.js 加载完成，已开启 4K 直接下载模式');
+// 分辨率面板
+var resolutionPanel = document.getElementById('resolutionPanel');
+var resolutionOverlay = document.getElementById('resolutionOverlay');
+var currentDownloadUrl = '';
 
-    // 1. 核心功能：获取当前页面上的高清图链接
-    function getCurrentImageUrl() {
-        let url = '';
-        // 尝试从页面中获取图片地址 (根据必应每日一图的页面结构)
-        const imgElement = document.querySelector('.img_cont img') || 
-                           document.querySelector('.bgImg') || 
-                           document.querySelector('#bgImage') ||
-                           document.querySelector('img[class*="img"]');
+function openPreview(index) {
+    if (!allData || allData.length === 0) return;
+    if (index < 0) index = 0;
+    if (index >= allData.length) index = allData.length - 1;
+    currentPreviewIndex = index;
+    currentPreviewItem = allData[currentPreviewIndex];
+    resetZoom();
+    showPreview(currentPreviewIndex);
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        if (imgElement && imgElement.src) {
-            url = imgElement.src;
-        }
-        
-        // 如果找不到，尝试从背景图中提取
-        if (!url) {
-            const bgDiv = document.querySelector('.img_cont') || document.querySelector('.bgDiv');
-            if (bgDiv) {
-                const bgStyle = window.getComputedStyle(bgDiv).backgroundImage;
-                if (bgStyle) {
-                    // 提取 url(...) 里面的链接
-                    const match = bgStyle.match(/url\(["']?([^"']*)["']?\)/);
-                    if (match && match[1]) {
-                        url = match[1];
-                    }
-                }
-            }
-        }
+function showPreview(index) {
+    if (allData.length === 0) return;
+    if (index < 0) index = allData.length - 1;
+    if (index >= allData.length) index = 0;
+    currentPreviewIndex = index;
+    currentPreviewItem = allData[currentPreviewIndex];
+    var imgSrc = getImageUrl(currentPreviewItem.jpg || currentPreviewItem.webp || '');
+    previewImg.src = imgSrc;
+    previewTitle.textContent = currentPreviewItem.copyright || '';
+    previewDate.textContent = currentPreviewItem.date || '';
+    detailLink.href = imgSrc;
+    resetZoom();
+}
 
-        console.log('📁 获取到原始图片链接:', url);
-        return url;
+function closePreview() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    closeDetailPanel();
+    resolutionPanel.classList.remove('active');
+    resolutionOverlay.classList.remove('active');
+}
+
+function updateTransform() {
+    previewImg.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')';
+}
+function resetZoom() {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    updateTransform();
+}
+
+function bindPreviewEvents() {
+    imageContainer.addEventListener('mousedown', function(e) {
+        if (scale <= 1) return;
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        lastTranslateX = translateX;
+        lastTranslateY = translateY;
+        imageContainer.style.cursor = 'grabbing';
+    });
+    document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        translateX = lastTranslateX + e.clientX - startX;
+        translateY = lastTranslateY + e.clientY - startY;
+        updateTransform();
+    });
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+        imageContainer.style.cursor = 'grab';
+    });
+    imageContainer.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        var delta = e.deltaY > 0 ? -0.15 : 0.15;
+        scale = Math.min(Math.max(scale + delta, minScale), maxScale);
+        if (scale <= 1) { translateX = 0; translateY = 0; }
+        updateTransform();
+    }, { passive: false });
+}
+
+// 详情面板
+function openDetailPanel() {
+    if (!currentPreviewItem) return;
+    document.getElementById('detailDate').textContent = currentPreviewItem.date || '-';
+    document.getElementById('detailTitle').textContent = currentPreviewItem.copyright || currentPreviewItem.title || '-';
+    document.getElementById('detailCopyright').textContent = currentPreviewItem.copyright || '-';
+    document.getElementById('detailLocale').textContent = currentPreviewItem.locale || 'zh-CN';
+    document.getElementById('detailResolution').textContent = '1920 x 1080';
+    document.getElementById('detailPanel').classList.add('open');
+    document.getElementById('detailOverlay').classList.add('active');
+}
+function closeDetailPanel() {
+    document.getElementById('detailPanel').classList.remove('open');
+    document.getElementById('detailOverlay').classList.remove('active');
+}
+
+// 下载按钮
+document.getElementById('downloadBtn').addEventListener('click', function() {
+    var url = getImageUrl(currentPreviewItem.jpg || currentPreviewItem.webp || '');
+    if (!url) return;
+    currentDownloadUrl = url;
+    resolutionPanel.classList.add('active');
+    resolutionOverlay.classList.add('active');
+});
+
+document.getElementById('resolutionClose').addEventListener('click', function() {
+    resolutionPanel.classList.remove('active');
+    resolutionOverlay.classList.remove('active');
+});
+
+resolutionOverlay.addEventListener('click', function() {
+    resolutionPanel.classList.remove('active');
+    resolutionOverlay.classList.remove('active');
+});
+
+document.querySelectorAll('.resolution-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var width = this.getAttribute('data-width');
+        var height = this.getAttribute('data-height');
+        downloadWithResolution(currentDownloadUrl, width, height);
+        resolutionPanel.classList.remove('active');
+        resolutionOverlay.classList.remove('active');
+    });
+});
+
+function downloadWithResolution(url, width, height) {
+    var downloadUrl = url;
+    if (url.indexOf('th?id=') !== -1) {
+        var baseUrl = url.split('&')[0];
+        downloadUrl = baseUrl + '&w=' + width + '&h=' + height;
     }
+    var a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = 'wallpaper_' + width + 'x' + height + '.jpg';
+    a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
-    // 2. 核心功能：将图片链接转换成 4K (UHD) 链接
-    function convertTo4K(url) {
-        if (!url) return null;
-        
-        let finalUrl = url;
-        // 必应图片 UHD 格式转换
-        if (!finalUrl.includes('_UHD.jpg')) {
-            // 替换类似 _1920x1080.jpg 为 _UHD.jpg
-            finalUrl = finalUrl.replace(/_\d+x\d+\.jpg/i, '_UHD.jpg');
-            // 如果替换失败，强制在 .jpg 前插入 _UHD
-            if (!finalUrl.includes('_UHD.jpg')) {
-                finalUrl = finalUrl.replace('.jpg', '_UHD.jpg');
-            }
-        }
-        console.log('📁 已转换为 4K 下载链接:', finalUrl);
-        return finalUrl;
+// 事件绑定
+document.getElementById('closeBtn').addEventListener('click', closePreview);
+document.getElementById('prevPreviewBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    showPreview(currentPreviewIndex - 1);
+});
+document.getElementById('nextPreviewBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    showPreview(currentPreviewIndex + 1);
+});
+document.getElementById('detailBtn').addEventListener('click', openDetailPanel);
+document.getElementById('detailPanelClose').addEventListener('click', closeDetailPanel);
+document.getElementById('detailOverlay').addEventListener('click', closeDetailPanel);
+overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePreview();
+});
+document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closePreview();
+    if (e.key === 'ArrowLeft') showPreview(currentPreviewIndex - 1);
+    if (e.key === 'ArrowRight') showPreview(currentPreviewIndex + 1);
+    if (e.key === 'Escape' && document.getElementById('detailPanel').classList.contains('open')) {
+        closeDetailPanel();
     }
+});
 
-    // 3. 触发浏览器下载
-    function triggerDownload(url, filename) {
-        if (!url) {
-            console.error('❌ 下载失败：没有有效的链接');
-            return;
-        }
-
-        // 生成文件名 (默认取 URL 末尾，或使用自定义名称)
-        let fileName = filename || url.split('/').pop() || 'bing_4k_wallpaper.jpg';
-        // 如果文件名没有后缀，加上 .jpg
-        if (!fileName.includes('.')) {
-            fileName += '.jpg';
-        }
-
-        // 方式 A: 使用 a 标签模拟点击 (最常见的触发下载方式)
-        try {
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            console.log('✅ 4K 图片下载已成功触发！');
-        } catch (e) {
-            // 方式 B: 如果 A 因跨域 CORS 失败，改为新标签页打开 (用户右键另存)
-            console.warn('⚠️ 自动下载被浏览器安全策略拦截，已为您在新标签页打开 4K 图片。');
-            console.warn('👉 请在新页面右键点击图片，选择“图片另存为”即可保存 4K 原图。');
-            window.open(url, '_blank');
-        }
-    }
-
-    // 4. 监听并替换下载按钮的点击事件
-    function setupDownloadButton() {
-        // 根据你的截图，按钮的 ID 或 Class
-        let downloadBtn = document.getElementById('downloadBtn') || document.querySelector('.btn-download');
-
-        if (!downloadBtn) {
-            // 如果页面还没加载完，轮询等待
-            setTimeout(setupDownloadButton, 500);
-            return;
-        }
-
-        console.log('✅ 找到下载按钮，正在替换为 4K 直接下载功能...');
-
-        // 移除所有旧的监听器，使用 cloneNode 替换 (防止旧代码残留)
-        downloadBtn.replaceWith(downloadBtn.cloneNode(true));
-        const newBtn = document.getElementById('downloadBtn') || document.querySelector('.btn-download');
-
-        if (newBtn) {
-            // 绑定全新的点击事件
-            newBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('🖱️ 下载按钮被点击');
-                
-                // 获取链接 -> 转 4K -> 下载
-                const originalUrl = getCurrentImageUrl();
-                const final4kUrl = convertTo4K(originalUrl);
-                triggerDownload(final4kUrl);
-            });
-            console.log('✅ 下载按钮替换成功！点击将直接下载 4K 图片。');
-        }
-    }
-
-    // 5. 页面加载完成后执行
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupDownloadButton);
-    } else {
-        setupDownloadButton();
-    }
-
-})();
+bindPreviewEvents();
