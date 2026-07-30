@@ -30,4 +30,4 @@ function getThumbnailUrl(url) {
     return url;
 }
 
-var PAGE_SIZE = window.innerWidth <= 500 ? 12 : 42;
+var PAGE_SIZE = window.innerWidth <= 500 ? 12 : 30;
