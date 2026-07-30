@@ -1,6 +1,18 @@
 {
   "items": [
     {
+      "date": "2025-06-06",
+      "copyright": "Bottle-cap mural made by Oscar Olivares in Guatire, Venezuela (© FEDERICO PARRA/AFP via Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.OlivaresMural_EN-US8824492734_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.OlivaresMural_EN-US8824492734_UHD.jpg"
+    },
+    {
+      "date": "2025-06-05",
+      "copyright": "The beach at Cala Luna, Sardinia, Italy (© guenterguni/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.CalaLuna_EN-US8760708047_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.CalaLuna_EN-US8760708047_UHD.jpg"
+    },
+    {
       "date": "2025-06-04",
       "copyright": "Bicycles on a bridge in Utrecht, Netherlands (© George Pachantouris/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.BicyclesUtrecht_EN-US8449213938_UHD.jpg",
@@ -239,23 +251,11 @@
       "copyright": "Magellanic penguins, Volunteer Point, Falkland Islands (© imageBROKER/Matthias Graben/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.MagellanicPenguin_EN-US3332048594_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.MagellanicPenguin_EN-US3332048594_UHD.jpg"
-    },
-    {
-      "date": "2025-04-25",
-      "copyright": "Spire Cove in Kenai Fjords National Park, Seward, Alaska (© Wander Photography/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.KenaiSpires_EN-US3294247007_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.KenaiSpires_EN-US3294247007_UHD.jpg"
-    },
-    {
-      "date": "2025-04-24",
-      "copyright": "Shakespeare's Globe, London, England (© Peter Dazeley/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.GlobeTheatre_EN-US3262022178_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.GlobeTheatre_EN-US3262022178_UHD.jpg"
     }
   ],
   "page": 11,
   "pageSize": 42,
-  "total": 2034,
+  "total": 2036,
   "totalPages": 49,
   "hasMore": true
 }

@@ -1,6 +1,18 @@
 {
   "items": [
     {
+      "date": "2025-07-18",
+      "copyright": "Lavender fields in Plateau de Valensole, France (© zpagistock/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.FranceLavender_EN-US5224253118_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.FranceLavender_EN-US5224253118_UHD.jpg"
+    },
+    {
+      "date": "2025-07-17",
+      "copyright": "Temple of Philae (aka Temple of Isis), Aswan, Egypt (© Ratnakorn Piyasirisorost/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.TemplePhilae_EN-US5062419351_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.TemplePhilae_EN-US5062419351_UHD.jpg"
+    },
+    {
       "date": "2025-07-16",
       "copyright": "Perseid meteor shower and an ancient bristlecone pine, Great Basin National Park, Nevada (© Wirestock Creators/Shutterstock)",
       "jpg": "https://cn.bing.com/th?id=OHR.PerseidsPine_EN-US4826682211_UHD.jpg",
@@ -239,23 +251,11 @@
       "copyright": "Arromanches-les-Bains in Normandy, France (© Horia Merla/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.NormandyBeach_EN-US8863709180_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.NormandyBeach_EN-US8863709180_UHD.jpg"
-    },
-    {
-      "date": "2025-06-06",
-      "copyright": "Bottle-cap mural made by Oscar Olivares in Guatire, Venezuela (© FEDERICO PARRA/AFP via Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.OlivaresMural_EN-US8824492734_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.OlivaresMural_EN-US8824492734_UHD.jpg"
-    },
-    {
-      "date": "2025-06-05",
-      "copyright": "The beach at Cala Luna, Sardinia, Italy (© guenterguni/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.CalaLuna_EN-US8760708047_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.CalaLuna_EN-US8760708047_UHD.jpg"
     }
   ],
   "page": 10,
   "pageSize": 42,
-  "total": 2034,
+  "total": 2036,
   "totalPages": 49,
   "hasMore": true
 }
