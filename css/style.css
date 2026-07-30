@@ -306,8 +306,23 @@ html, body { width: 100%; height: 100%; background: var(--bg-primary); font-fami
 .detail-panel-body::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
 .detail-item { display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--border-color); }
 .detail-item:last-child { border-bottom: none; }
-.detail-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }
-.detail-value { font-size: 15px; color: var(--text-primary); line-height: 1.5; word-break: break-word; }
+.detail-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    user-select: text;  /* ★★★ 允许选中 ★★★ */
+    -webkit-user-select: text;
+}
+.detail-value {
+    font-size: 15px;
+    color: var(--text-primary);
+    line-height: 1.5;
+    word-break: break-word;
+    user-select: text;  /* ★★★ 允许选中 ★★★ */
+    -webkit-user-select: text;
+}
 .detail-value a { color: var(--accent-color); text-decoration: none; }
 .detail-value a:hover { text-decoration: underline; }
 
