@@ -27,24 +27,18 @@ jobs:
         with:
           node-version: '20'
 
-      # ★★★ 关键：安装 sharp 系统依赖 ★★★
+      # ★★★ 安装 sharp 系统依赖 ★★★
       - name: 安装系统依赖
         run: |
           sudo apt-get update
-          sudo apt-get install -y libvips-dev build-essential
+          sudo apt-get install -y libvips-dev libglib2.0-dev
 
       - name: 安装 Node 依赖
         run: |
           npm install
-          # 强制重新构建 sharp
           npm rebuild sharp
           # 验证 sharp 是否可用
-          node -e "require('sharp'); console.log('✅ sharp 可用')" || exit 1
-
-      - name: 检查脚本文件
-        run: |
-          ls -la scripts/
-          cat scripts/fetch.js | head -30
+          node -e "try { require('sharp'); console.log('✅ sharp 可用'); } catch(e) { console.error('❌ sharp 不可用:', e.message); process.exit(1); }"
 
       - name: 抓取壁纸
         id: fetch
@@ -52,7 +46,6 @@ jobs:
           echo "开始抓取壁纸..."
           npm run fetch 2>&1 | tee fetch.log
           
-          # 检查是否有变更
           if git status --porcelain | grep -qE '(picture|webp|data|urls\.txt|copyrights\.txt)'; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "✅ 有新的壁纸需要提交"
@@ -67,10 +60,6 @@ jobs:
         run: |
           echo "=== 抓取日志 ==="
           cat fetch.log || echo "无日志"
-          echo ""
-          echo "=== 文件列表 ==="
-          ls -la picture/ | head -10 || echo "picture 目录为空"
-          ls -la webp/ | head -10 || echo "webp 目录为空"
           echo ""
           echo "=== Git 状态 ==="
           git status
