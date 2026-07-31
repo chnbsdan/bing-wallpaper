@@ -776,86 +776,119 @@ html, body {
 }
 
 /* ============================================================
-   Twikoo 评论样式修复 - 深色/亮色模式
+   Twikoo 评论样式 - 深色/浅色模式自适应
    ============================================================ */
 
-/* ★★★ 强制修复所有模式下的输入框文字 ★★★ */
+/* ★★★ 深色模式：文字变亮（白/浅灰） ★★★ */
+[data-theme="dark"] .tk-comments,
+[data-theme="dark"] .tk-comment,
+[data-theme="dark"] .tk-input,
+[data-theme="dark"] .tk-submit,
+[data-theme="dark"] .tk-meta,
+[data-theme="dark"] .tk-loading {
+    color: #ffffff !important;
+}
 
-/* ---- 深色模式 ---- */
+/* 输入框 - 文字白色，背景半透明深色 */
 [data-theme="dark"] .tk-input textarea,
 [data-theme="dark"] .tk-input input[type="text"],
 [data-theme="dark"] .tk-input input[type="email"],
-[data-theme="dark"] .tk-input input[type="url"],
-[data-theme="dark"] .tk-input .el-textarea__inner,
-[data-theme="dark"] .tk-input .el-input__inner {
+[data-theme="dark"] .tk-input input[type="url"] {
     color: #ffffff !important;
     background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 [data-theme="dark"] .tk-input textarea::placeholder,
-[data-theme="dark"] .tk-input input::placeholder,
-[data-theme="dark"] .tk-input .el-textarea__inner::placeholder,
-[data-theme="dark"] .tk-input .el-input__inner::placeholder {
-    color: rgba(255, 255, 255, 0.4) !important;
+[data-theme="dark"] .tk-input input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
-[data-theme="dark"] .tk-input textarea:focus,
-[data-theme="dark"] .tk-input input:focus {
-    border-color: #4fc3f7 !important;
-    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15) !important;
-}
-
-[data-theme="dark"] .tk-comment .tk-content {
-    color: rgba(255, 255, 255, 0.88) !important;
-}
-
-[data-theme="dark"] .tk-comment .tk-nick {
+/* 评论列表 - 昵称 */
+[data-theme="dark"] .tk-comment .tk-nick,
+[data-theme="dark"] .tk-comment .tk-nick a {
     color: #ffffff !important;
 }
 
-[data-theme="dark"] .tk-comment .tk-time {
-    color: rgba(255, 255, 255, 0.35) !important;
+/* 评论列表 - 内容正文 */
+[data-theme="dark"] .tk-comment .tk-content,
+[data-theme="dark"] .tk-comment .tk-content p,
+[data-theme="dark"] .tk-comment .tk-content span {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
+/* 评论列表 - 时间 */
+[data-theme="dark"] .tk-comment .tk-time {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 评论列表 - 操作按钮 */
+[data-theme="dark"] .tk-comment .tk-actions .tk-action {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+[data-theme="dark"] .tk-comment .tk-actions .tk-action:hover {
+    color: #4fc3f7 !important;
+}
+
+/* 评论列表 - 点赞数 */
+[data-theme="dark"] .tk-comment .tk-like .tk-like-count {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 提交按钮 */
 [data-theme="dark"] .tk-submit .tk-btn {
     background: #4fc3f7 !important;
-    color: #fff !important;
+    color: #ffffff !important;
 }
-
 [data-theme="dark"] .tk-submit .tk-btn:hover {
     opacity: 0.85 !important;
 }
 
+/* 评论计数和排序 */
+[data-theme="dark"] .tk-meta .tk-count {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+[data-theme="dark"] .tk-meta .tk-order {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+[data-theme="dark"] .tk-meta .tk-order.active {
+    color: #4fc3f7 !important;
+}
+
+/* 加载更多 */
+[data-theme="dark"] .tk-loading .tk-load-more {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+[data-theme="dark"] .tk-loading .tk-load-more:hover {
+    color: #4fc3f7 !important;
+}
+
+/* 回复框 */
+[data-theme="dark"] .tk-reply .tk-input textarea {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 评论框整体背景 - 透明 */
 [data-theme="dark"] .tk-comments {
     background: transparent !important;
 }
-
 [data-theme="dark"] .tk-input {
     background: rgba(255, 255, 255, 0.04) !important;
-    border-color: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 8px !important;
 }
 
-/* 深色模式下所有输入相关元素强制白色 */
-[data-theme="dark"] .tk-input * {
-    color: #ffffff !important;
+/* 空状态 */
+[data-theme="dark"] .tk-empty {
+    color: rgba(255, 255, 255, 0.3) !important;
 }
 
-[data-theme="dark"] .tk-input ::placeholder {
-    color: rgba(255, 255, 255, 0.35) !important;
-}
-
-/* ---- 亮色模式（保持默认，微调） ---- */
-[data-theme="light"] .tk-input textarea,
-[data-theme="light"] .tk-input input {
-    color: #333333 !important;
-    background: #f5f7fa !important;
-    border-color: #dce1e8 !important;
-}
-
-[data-theme="light"] .tk-input textarea::placeholder,
-[data-theme="light"] .tk-input input::placeholder {
-    color: #aab0b8 !important;
+/* 管理员标签 */
+[data-theme="dark"] .tk-comment .tk-admin-tag {
+    background: rgba(79, 195, 247, 0.2) !important;
+    color: #4fc3f7 !important;
 }
 
 /* ============================================================
