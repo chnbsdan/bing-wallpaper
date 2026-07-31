@@ -546,6 +546,35 @@ function openPreview(index) {
         e.stopPropagation();
         toggleToolbar();
     };
+
+    // ★★★ 手机左右滑动切换 ★★★
+    var startX = 0;
+    var startY = 0;
+
+    previewImg.ontouchstart = function(e) {
+        var touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+    };
+
+    previewImg.ontouchend = function(e) {
+        if (startX === 0) return;
+        var touch = e.changedTouches[0];
+        var deltaX = touch.clientX - startX;
+        var deltaY = touch.clientY - startY;
+        
+        // 水平滑动距离大于30px，且大于垂直滑动
+        if (Math.abs(deltaX) > 30 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+            if (deltaX > 0) {
+                showPreview(currentPreviewIndex - 1); // 右滑上一张
+            } else {
+                showPreview(currentPreviewIndex + 1); // 左滑下一张
+            }
+            showToolbar();
+        }
+        startX = 0;
+        startY = 0;
+    };
 }
 
 function showPreview(index) {
