@@ -776,119 +776,125 @@ html, body {
 }
 
 /* ============================================================
-   Twikoo 评论样式 - 深色/浅色模式自适应
+   Twikoo 深色模式 - 强制暗色背景 + 白色文字
    ============================================================ */
 
-/* ★★★ 深色模式：文字变亮（白/浅灰） ★★★ */
-[data-theme="dark"] .tk-comments,
-[data-theme="dark"] .tk-comment,
-[data-theme="dark"] .tk-input,
-[data-theme="dark"] .tk-submit,
-[data-theme="dark"] .tk-meta,
-[data-theme="dark"] .tk-loading {
+[data-theme="dark"] .tk-comments {
+    background: #1a1a2e !important;
     color: #ffffff !important;
 }
 
-/* 输入框 - 文字白色，背景半透明深色 */
+[data-theme="dark"] .tk-comment {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .tk-input {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+}
+
 [data-theme="dark"] .tk-input textarea,
 [data-theme="dark"] .tk-input input[type="text"],
 [data-theme="dark"] .tk-input input[type="email"],
 [data-theme="dark"] .tk-input input[type="url"] {
     color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 [data-theme="dark"] .tk-input textarea::placeholder,
 [data-theme="dark"] .tk-input input::placeholder {
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* 评论列表 - 昵称 */
 [data-theme="dark"] .tk-comment .tk-nick,
 [data-theme="dark"] .tk-comment .tk-nick a {
     color: #ffffff !important;
 }
 
-/* 评论列表 - 内容正文 */
 [data-theme="dark"] .tk-comment .tk-content,
-[data-theme="dark"] .tk-comment .tk-content p,
-[data-theme="dark"] .tk-comment .tk-content span {
+[data-theme="dark"] .tk-comment .tk-content p {
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* 评论列表 - 时间 */
 [data-theme="dark"] .tk-comment .tk-time {
     color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* 评论列表 - 操作按钮 */
 [data-theme="dark"] .tk-comment .tk-actions .tk-action {
     color: rgba(255, 255, 255, 0.5) !important;
 }
+
 [data-theme="dark"] .tk-comment .tk-actions .tk-action:hover {
     color: #4fc3f7 !important;
 }
 
-/* 评论列表 - 点赞数 */
 [data-theme="dark"] .tk-comment .tk-like .tk-like-count {
     color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* 提交按钮 */
 [data-theme="dark"] .tk-submit .tk-btn {
     background: #4fc3f7 !important;
     color: #ffffff !important;
 }
-[data-theme="dark"] .tk-submit .tk-btn:hover {
-    opacity: 0.85 !important;
-}
 
-/* 评论计数和排序 */
 [data-theme="dark"] .tk-meta .tk-count {
     color: rgba(255, 255, 255, 0.6) !important;
 }
+
 [data-theme="dark"] .tk-meta .tk-order {
     color: rgba(255, 255, 255, 0.4) !important;
 }
+
 [data-theme="dark"] .tk-meta .tk-order.active {
     color: #4fc3f7 !important;
 }
 
-/* 加载更多 */
 [data-theme="dark"] .tk-loading .tk-load-more {
     color: rgba(255, 255, 255, 0.4) !important;
 }
+
 [data-theme="dark"] .tk-loading .tk-load-more:hover {
     color: #4fc3f7 !important;
 }
 
-/* 回复框 */
-[data-theme="dark"] .tk-reply .tk-input textarea {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-/* 评论框整体背景 - 透明 */
-[data-theme="dark"] .tk-comments {
-    background: transparent !important;
-}
-[data-theme="dark"] .tk-input {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 8px !important;
-}
-
-/* 空状态 */
 [data-theme="dark"] .tk-empty {
     color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* 管理员标签 */
 [data-theme="dark"] .tk-comment .tk-admin-tag {
     background: rgba(79, 195, 247, 0.2) !important;
     color: #4fc3f7 !important;
+}
+
+/* ★★★ 强制评论弹窗背景为深色 ★★★ */
+[data-theme="dark"] .comment-modal {
+    background: #1a1a2e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .comment-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .comment-header h2 {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .comment-header .close-btn {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-theme="dark"] .comment-header .close-btn:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #ffffff !important;
+}
+
+/* ★★★ 评论弹窗 body 背景 ★★★ */
+[data-theme="dark"] .comment-body {
+    background: #1a1a2e !important;
 }
 
 /* ============================================================
