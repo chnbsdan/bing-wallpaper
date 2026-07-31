@@ -7,11 +7,6 @@ on:
     - cron: '0 9 * * *'
     - cron: '0 13 * * *'
   workflow_dispatch:
-    inputs:
-      force_date:
-        description: '强制抓取指定日期 (格式: 2026-07-31)，留空则抓取今天'
-        required: false
-        default: ''
 
 permissions:
   contents: write
@@ -39,13 +34,8 @@ jobs:
 
       - name: 抓取壁纸
         id: fetch
-        env:
-          FORCE_DATE: ${{ github.event.inputs.force_date || '' }}
         run: |
           echo "开始抓取壁纸..."
-          if [ -n "$FORCE_DATE" ]; then
-            echo "📌 强制日期: $FORCE_DATE"
-          fi
           npm run fetch 2>&1 | tee fetch.log
           
           if git status --porcelain | grep -qE '(picture|data|urls\.txt|copyrights\.txt)'; then
@@ -56,11 +46,66 @@ jobs:
             echo "📭 没有新的壁纸"
           fi
 
+      # ★★★ 强制重新生成分页（即使没有新壁纸） ★★★
+      - name: 强制重新生成分页
+        run: |
+          echo "🔄 强制重新生成分页..."
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+            const DATA_FILE = './data/wallpapers.json';
+            const PAGES_DIR = './data/pages';
+            const PAGE_SIZE = 42;
+            
+            if (!fs.existsSync(DATA_FILE)) {
+              console.log('❌ wallpapers.json 不存在');
+              process.exit(0);
+            }
+            
+            const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+            
+            // 清空 pages 目录
+            if (fs.existsSync(PAGES_DIR)) {
+              const files = fs.readdirSync(PAGES_DIR);
+              files.forEach(f => {
+                if (f.endsWith('.json')) {
+                  fs.unlinkSync(path.join(PAGES_DIR, f));
+                }
+              });
+            } else {
+              fs.mkdirSync(PAGES_DIR, { recursive: true });
+            }
+            
+            const totalPages = Math.ceil(data.length / PAGE_SIZE);
+            console.log(\`📄 生成 \${totalPages} 个分页文件\`);
+            
+            for (let i = 0; i < totalPages; i++) {
+              const start = i * PAGE_SIZE;
+              const end = Math.min(start + PAGE_SIZE, data.length);
+              const pageData = {
+                items: data.slice(start, end),
+                page: i + 1,
+                pageSize: PAGE_SIZE,
+                total: data.length,
+                totalPages: totalPages,
+                hasMore: i + 1 < totalPages
+              };
+              fs.writeFileSync(
+                path.join(PAGES_DIR, \`page-\${i + 1}.json\`),
+                JSON.stringify(pageData, null, 2)
+              );
+            }
+            console.log('✅ 分页重新生成完成');
+          "
+
       - name: 显示日志
         if: always()
         run: |
           echo "=== 抓取日志 ==="
           cat fetch.log || echo "无日志"
+          echo ""
+          echo "=== 分页文件列表 ==="
+          ls -la data/pages/ || echo "pages 目录不存在"
           echo ""
           echo "=== Git 状态 ==="
           git status
