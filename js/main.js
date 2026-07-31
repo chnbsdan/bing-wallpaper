@@ -642,7 +642,7 @@ previewOverlay.addEventListener('click', function(e) {
 closePreviewBtn.addEventListener('click', closePreview);
 
 // ============================================================
-// 7.1 下载下拉菜单
+// 7.1 下载下拉菜单 - 强制下载
 // ============================================================
 downloadBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -667,6 +667,7 @@ function downloadImage(index, resolution) {
     if (!allData || allData.length === 0) return;
     var item = allData[index];
     if (!item) return;
+    
     var url = getImageUrl(item.jpg || item.webp || '');
     var resolutions = {
         '4k': { w: 3840, h: 2160 },
@@ -676,19 +677,55 @@ function downloadImage(index, resolution) {
     };
     var res = resolutions[resolution] || resolutions['fhd'];
     var downloadUrl = url;
+    
     if (url.indexOf('th?id=') !== -1) {
         var baseUrl = url.split('&')[0];
         downloadUrl = baseUrl + '&w=' + res.w + '&h=' + res.h;
     }
-    var a = document.createElement('a');
-    a.href = downloadUrl;
+    
     var fileName = 'wallpaper_' + (item.date || '') + '_' + resolution + '.jpg';
-    a.download = fileName;
-    a.target = '_blank';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    console.log('📥 下载: ' + fileName + ' (' + resolution + ')');
+    
+    console.log('📥 开始下载: ' + fileName);
+    console.log('📷 下载链接: ' + downloadUrl);
+    
+    // ★★★ 使用 fetch + Blob 强制下载 ★★★
+    fetch(downloadUrl, {
+        mode: 'cors',
+        headers: {
+            'Origin': window.location.origin
+        }
+    })
+    .then(function(response) {
+        if (!response.ok) throw new Error('网络请求失败');
+        return response.blob();
+    })
+    .then(function(blob) {
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        setTimeout(function() {
+            URL.revokeObjectURL(link.href);
+        }, 1000);
+        
+        console.log('✅ 下载成功: ' + fileName);
+    })
+    .catch(function(err) {
+        console.warn('⚠️ Fetch 下载失败，使用备用方法:', err.message);
+        
+        // ★★★ 备用方法 ★★★
+        var link = document.createElement('a');
+        link.href = downloadUrl + (downloadUrl.indexOf('?') === -1 ? '?' : '&') + '_t=' + Date.now();
+        link.download = fileName;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        console.log('📥 使用备用方法下载: ' + fileName);
+    });
 }
 
 // ============================================================
