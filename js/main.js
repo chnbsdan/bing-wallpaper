@@ -88,38 +88,21 @@ document.addEventListener('click', function(e) {
 });
 
 // ============================================================
-// 5. 评论系统 - Twikoo
+// 5. 评论系统 - Twikoo CDN 方式
 // ============================================================
-var TWIKOO_API = 'https://twikoo.hangdn.net';
-var comments = [];
-var commentPage = 1;
-var commentPageSize = 10;
-var commentTotal = 0;
-var commentSort = 'time';
-var commentOrder = 'asc';
-var commentLoading = false;
-
 var commentOverlay = document.getElementById('commentOverlay');
-var commentList = document.getElementById('commentList');
-var commentCount = document.getElementById('commentCount');
-var commentNavBtn = document.getElementById('commentNavBtn');
 var closeCommentBtn = document.getElementById('closeCommentBtn');
-var commentText = document.getElementById('commentText');
-var commentNick = document.getElementById('commentNick');
-var commentEmail = document.getElementById('commentEmail');
-var commentSite = document.getElementById('commentSite');
-var commentSubmitBtn = document.getElementById('commentSubmitBtn');
-var loadMoreBtn = document.getElementById('loadMoreBtn');
-var sortByTime = document.getElementById('sortByTime');
-var sortByHeat = document.getElementById('sortByHeat');
+var commentNavBtn = document.getElementById('commentNavBtn');
 
 function openComment() {
     commentOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    if (comments.length === 0) {
-        loadComments(1);
-    }
     toggleNav(false);
+    
+    // ★★★ 首次打开时初始化 Twikoo ★★★
+    if (!document.getElementById('tcomment').hasChildNodes()) {
+        initTwikoo();
+    }
 }
 
 function closeComment() {
@@ -127,202 +110,21 @@ function closeComment() {
     document.body.style.overflow = '';
 }
 
-// 获取所有评论
-async function loadComments(page) {
-    if (commentLoading) return;
-    commentLoading = true;
-    loadMoreBtn.textContent = '加载中...';
-    loadMoreBtn.disabled = true;
+// ★★★ 初始化 Twikoo ★★★
+function initTwikoo() {
+    if (typeof twikoo === 'undefined') {
+        console.warn('Twikoo 未加载，等待重试...');
+        setTimeout(initTwikoo, 500);
+        return;
+    }
     
-    try {
-        var url = TWIKOO_API + '/api/comment/get?page=' + page + '&pageSize=' + commentPageSize;
-        // Twikoo 排序参数
-        if (commentSort === 'time') {
-            url += '&sort=created&order=' + commentOrder;
-        } else {
-            url += '&sort=like&order=desc';
-        }
-        
-        var res = await fetch(url);
-        if (!res.ok) throw new Error('加载失败');
-        var data = await res.json();
-        
-        // Twikoo 返回格式适配
-        comments = data.data || [];
-        commentTotal = data.total || 0;
-        commentCount.textContent = commentTotal;
-        renderComments(comments);
-        loadMoreBtn.style.display = (page * commentPageSize < commentTotal) ? 'block' : 'none';
-        commentPage = page;
-    } catch (err) {
-        console.error('加载评论失败:', err);
-        commentList.innerHTML = '<div class="comment-empty"><i class="fas fa-exclamation-circle"></i><p>加载评论失败，请稍后重试</p></div>';
-    }
-    commentLoading = false;
-    loadMoreBtn.textContent = '加载更多';
-    loadMoreBtn.disabled = false;
-}
-
-// 渲染评论
-function renderComments(items) {
-    if (!items || items.length === 0) {
-        commentList.innerHTML = '<div class="comment-empty"><i class="fas fa-comment"></i><p>暂无留言，快来发表第一条吧 ✨</p></div>';
-        return;
-    }
-    var html = '';
-    items.forEach(function(item) {
-        var avatar = item.avatar || 'https://api.dicebear.com/7.x/identicon/svg?seed=' + (item.nick || 'user');
-        var nick = item.nick || '匿名';
-        var time = item.created ? formatTime(item.created) : '';
-        var content = item.comment || item.content || '';
-        var like = item.like || 0;
-        var ua = item.ua || '';
-        var browser = getBrowser(ua);
-        var isLiked = false;
-
-        html += '<div class="comment-item" data-id="' + (item._id || '') + '">';
-        html += '<div class="comment-meta">';
-        html += '<div class="comment-avatar"><img src="' + avatar + '" /></div>';
-        html += '<span class="comment-author">' + escapeHtml(nick) + '</span>';
-        html += '<span class="comment-time">' + time + '</span>';
-        if (browser) html += '<span class="comment-browser">' + browser + '</span>';
-        html += '</div>';
-        html += '<div class="comment-content">' + escapeHtml(content) + '</div>';
-        html += '<div class="comment-actions">';
-        html += '<button class="like-btn' + (isLiked ? ' liked' : '') + '" onclick="toggleLike(\'' + (item._id || '') + '\', this)"><i class="fas fa-heart"></i> <span class="like-count">' + like + '</span></button>';
-        html += '<button onclick="replyComment(\'' + (item._id || '') + '\', \'' + escapeHtml(nick) + '\')"><i class="fas fa-reply"></i> 回复</button>';
-        html += '</div>';
-        html += '</div>';
+    twikoo.init({
+        envId: 'https://twikoo.hangdn.net',  // ★ 你的 Twikoo 后端地址
+        el: '#tcomment',                      // 容器元素
+        // region: 'ap-guangzhou',            // Vercel 部署不需要
+        lang: 'zh-CN',
+        // 管理后台: https://twikoo.hangdn.net/admin
     });
-    commentList.innerHTML = html;
-}
-
-// 切换排序
-function setSort(type) {
-    if (commentSort === type) {
-        commentOrder = commentOrder === 'asc' ? 'desc' : 'asc';
-    } else {
-        commentSort = type;
-        commentOrder = type === 'time' ? 'asc' : 'desc';
-    }
-    sortByTime.className = 'sort-btn' + (commentSort === 'time' ? ' active' : '');
-    sortByHeat.className = 'sort-btn' + (commentSort === 'heat' ? ' active' : '');
-    loadComments(1);
-}
-
-sortByTime.addEventListener('click', function() { setSort('time'); });
-sortByHeat.addEventListener('click', function() { setSort('heat'); });
-
-loadMoreBtn.addEventListener('click', function() {
-    loadComments(commentPage + 1);
-});
-
-// 提交评论
-commentSubmitBtn.addEventListener('click', async function() {
-    var content = commentText.value.trim();
-    if (!content) {
-        alert('请输入评论内容');
-        return;
-    }
-    var nick = commentNick.value.trim() || '匿名';
-    var mail = commentEmail.value.trim() || '';
-    var site = commentSite.value.trim() || '';
-
-    commentSubmitBtn.disabled = true;
-    commentSubmitBtn.textContent = '提交中...';
-
-    try {
-        var data = {
-            comment: content,
-            nick: nick,
-            mail: mail,
-            url: site,
-            ua: navigator.userAgent
-        };
-        var res = await fetch(TWIKOO_API + '/api/comment/add', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        var result = await res.json();
-        if (!res.ok || result.code) {
-            throw new Error(result.msg || '提交失败');
-        }
-        
-        // 清空输入
-        commentText.value = '';
-        commentNick.value = '';
-        commentEmail.value = '';
-        commentSite.value = '';
-        
-        // 重新加载评论
-        loadComments(1);
-        alert('✅ 留言成功！');
-    } catch (err) {
-        console.error('提交失败:', err);
-        alert('❌ ' + err.message);
-    }
-    commentSubmitBtn.disabled = false;
-    commentSubmitBtn.textContent = '提交';
-});
-
-// Ctrl+Enter 提交
-commentText.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-        commentSubmitBtn.click();
-    }
-});
-
-// 点赞
-window.toggleLike = async function(id, btn) {
-    if (!id) return;
-    try {
-        var res = await fetch(TWIKOO_API + '/api/comment/like', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ _id: id })
-        });
-        if (!res.ok) throw new Error('点赞失败');
-        var data = await res.json();
-        var countSpan = btn.querySelector('.like-count');
-        var current = parseInt(countSpan.textContent) || 0;
-        countSpan.textContent = data.like || current + 1;
-        btn.classList.toggle('liked');
-    } catch (err) {
-        console.error('点赞失败:', err);
-    }
-};
-
-// 回复
-window.replyComment = function(id, nick) {
-    commentText.value = '@' + nick + ' ';
-    commentText.focus();
-};
-
-// 辅助函数
-function formatTime(iso) {
-    var d = new Date(iso);
-    var y = d.getFullYear();
-    var m = String(d.getMonth() + 1).padStart(2, '0');
-    var day = String(d.getDate()).padStart(2, '0');
-    var h = String(d.getHours()).padStart(2, '0');
-    var min = String(d.getMinutes()).padStart(2, '0');
-    return y + '-' + m + '-' + day + ' ' + h + ':' + min;
-}
-
-function getBrowser(ua) {
-    if (!ua) return '';
-    if (ua.indexOf('Chrome') > -1) return 'Chrome';
-    if (ua.indexOf('Firefox') > -1) return 'Firefox';
-    if (ua.indexOf('Safari') > -1) return 'Safari';
-    if (ua.indexOf('Edge') > -1) return 'Edge';
-    return '';
-}
-
-function escapeHtml(text) {
-    var div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
 }
 
 // 评论按钮事件
