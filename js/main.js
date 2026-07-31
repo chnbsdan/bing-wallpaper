@@ -88,15 +88,16 @@ document.addEventListener('click', function(e) {
 });
 
 // ============================================================
-// 5. 评论系统
+// 5. 评论系统 - Twikoo
 // ============================================================
-var COMMENT_API = 'https://waline.hangdn.com';
+var TWIKOO_API = 'https://twikoo.hangdn.net';
 var comments = [];
 var commentPage = 1;
 var commentPageSize = 10;
 var commentTotal = 0;
 var commentSort = 'time';
 var commentOrder = 'asc';
+var commentLoading = false;
 
 var commentOverlay = document.getElementById('commentOverlay');
 var commentList = document.getElementById('commentList');
@@ -126,17 +127,27 @@ function closeComment() {
     document.body.style.overflow = '';
 }
 
+// 获取所有评论
 async function loadComments(page) {
+    if (commentLoading) return;
+    commentLoading = true;
+    loadMoreBtn.textContent = '加载中...';
+    loadMoreBtn.disabled = true;
+    
     try {
-        var url = COMMENT_API + '/api/comment?page=' + page + '&pageSize=' + commentPageSize;
+        var url = TWIKOO_API + '/api/comment/get?page=' + page + '&pageSize=' + commentPageSize;
+        // Twikoo 排序参数
         if (commentSort === 'time') {
-            url += '&sort=time&order=' + commentOrder;
+            url += '&sort=created&order=' + commentOrder;
         } else {
             url += '&sort=like&order=desc';
         }
+        
         var res = await fetch(url);
         if (!res.ok) throw new Error('加载失败');
         var data = await res.json();
+        
+        // Twikoo 返回格式适配
         comments = data.data || [];
         commentTotal = data.total || 0;
         commentCount.textContent = commentTotal;
@@ -147,8 +158,12 @@ async function loadComments(page) {
         console.error('加载评论失败:', err);
         commentList.innerHTML = '<div class="comment-empty"><i class="fas fa-exclamation-circle"></i><p>加载评论失败，请稍后重试</p></div>';
     }
+    commentLoading = false;
+    loadMoreBtn.textContent = '加载更多';
+    loadMoreBtn.disabled = false;
 }
 
+// 渲染评论
 function renderComments(items) {
     if (!items || items.length === 0) {
         commentList.innerHTML = '<div class="comment-empty"><i class="fas fa-comment"></i><p>暂无留言，快来发表第一条吧 ✨</p></div>';
@@ -158,14 +173,14 @@ function renderComments(items) {
     items.forEach(function(item) {
         var avatar = item.avatar || 'https://api.dicebear.com/7.x/identicon/svg?seed=' + (item.nick || 'user');
         var nick = item.nick || '匿名';
-        var time = item.createdAt ? formatTime(item.createdAt) : '';
-        var content = item.content || '';
+        var time = item.created ? formatTime(item.created) : '';
+        var content = item.comment || item.content || '';
         var like = item.like || 0;
         var ua = item.ua || '';
         var browser = getBrowser(ua);
-        var isLiked = item.isLiked || false;
+        var isLiked = false;
 
-        html += '<div class="comment-item" data-id="' + (item.objectId || '') + '">';
+        html += '<div class="comment-item" data-id="' + (item._id || '') + '">';
         html += '<div class="comment-meta">';
         html += '<div class="comment-avatar"><img src="' + avatar + '" /></div>';
         html += '<span class="comment-author">' + escapeHtml(nick) + '</span>';
@@ -174,14 +189,15 @@ function renderComments(items) {
         html += '</div>';
         html += '<div class="comment-content">' + escapeHtml(content) + '</div>';
         html += '<div class="comment-actions">';
-        html += '<button class="like-btn' + (isLiked ? ' liked' : '') + '" onclick="toggleLike(\'' + (item.objectId || '') + '\', this)"><i class="fas fa-heart"></i> <span class="like-count">' + like + '</span></button>';
-        html += '<button onclick="replyComment(\'' + (item.objectId || '') + '\', \'' + escapeHtml(nick) + '\')"><i class="fas fa-reply"></i> 回复</button>';
+        html += '<button class="like-btn' + (isLiked ? ' liked' : '') + '" onclick="toggleLike(\'' + (item._id || '') + '\', this)"><i class="fas fa-heart"></i> <span class="like-count">' + like + '</span></button>';
+        html += '<button onclick="replyComment(\'' + (item._id || '') + '\', \'' + escapeHtml(nick) + '\')"><i class="fas fa-reply"></i> 回复</button>';
         html += '</div>';
         html += '</div>';
     });
     commentList.innerHTML = html;
 }
 
+// 切换排序
 function setSort(type) {
     if (commentSort === type) {
         commentOrder = commentOrder === 'asc' ? 'desc' : 'asc';
@@ -201,6 +217,7 @@ loadMoreBtn.addEventListener('click', function() {
     loadComments(commentPage + 1);
 });
 
+// 提交评论
 commentSubmitBtn.addEventListener('click', async function() {
     var content = commentText.value.trim();
     if (!content) {
@@ -216,43 +233,54 @@ commentSubmitBtn.addEventListener('click', async function() {
 
     try {
         var data = {
-            content: content,
+            comment: content,
             nick: nick,
             mail: mail,
             url: site,
             ua: navigator.userAgent
         };
-        var res = await fetch(COMMENT_API + '/api/comment', {
+        var res = await fetch(TWIKOO_API + '/api/comment/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        if (!res.ok) throw new Error('提交失败');
+        var result = await res.json();
+        if (!res.ok || result.code) {
+            throw new Error(result.msg || '提交失败');
+        }
+        
+        // 清空输入
         commentText.value = '';
         commentNick.value = '';
         commentEmail.value = '';
         commentSite.value = '';
+        
+        // 重新加载评论
         loadComments(1);
-        alert('✅ 留言提交成功，审核后显示');
+        alert('✅ 留言成功！');
     } catch (err) {
         console.error('提交失败:', err);
-        alert('❌ 提交失败，请稍后重试');
+        alert('❌ ' + err.message);
     }
     commentSubmitBtn.disabled = false;
     commentSubmitBtn.textContent = '提交';
 });
 
+// Ctrl+Enter 提交
 commentText.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
         commentSubmitBtn.click();
     }
 });
 
+// 点赞
 window.toggleLike = async function(id, btn) {
     if (!id) return;
     try {
-        var res = await fetch(COMMENT_API + '/api/like/' + id, {
-            method: 'POST'
+        var res = await fetch(TWIKOO_API + '/api/comment/like', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ _id: id })
         });
         if (!res.ok) throw new Error('点赞失败');
         var data = await res.json();
@@ -265,11 +293,13 @@ window.toggleLike = async function(id, btn) {
     }
 };
 
+// 回复
 window.replyComment = function(id, nick) {
     commentText.value = '@' + nick + ' ';
     commentText.focus();
 };
 
+// 辅助函数
 function formatTime(iso) {
     var d = new Date(iso);
     var y = d.getFullYear();
@@ -295,6 +325,7 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// 评论按钮事件
 commentNavBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     openComment();
