@@ -7,6 +7,11 @@ on:
     - cron: '0 9 * * *'
     - cron: '0 13 * * *'
   workflow_dispatch:
+    inputs:
+      force_date:
+        description: '强制抓取指定日期 (格式: 2026-07-31)，留空则抓取今天'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -34,8 +39,13 @@ jobs:
 
       - name: 抓取壁纸
         id: fetch
+        env:
+          FORCE_DATE: ${{ github.event.inputs.force_date || '' }}
         run: |
           echo "开始抓取壁纸..."
+          if [ -n "$FORCE_DATE" ]; then
+            echo "📌 强制日期: $FORCE_DATE"
+          fi
           npm run fetch 2>&1 | tee fetch.log
           
           if git status --porcelain | grep -qE '(picture|data|urls\.txt|copyrights\.txt)'; then
