@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "必应壁纸自动抓取与展示",
   "scripts": {
-    "fetch": "node scripts/fetch.js",
-    "merge": "node scripts/merge-txt.js"
+    "fetch": "node scripts/fetch-simple.js",
+    "fetch:full": "node scripts/fetch.js"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "sharp": "^0.33.0"
+    "axios": "^1.6.0"
   }
 }
