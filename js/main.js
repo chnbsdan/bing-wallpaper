@@ -642,7 +642,7 @@ previewOverlay.addEventListener('click', function(e) {
 closePreviewBtn.addEventListener('click', closePreview);
 
 // ============================================================
-// 7.1 下载下拉菜单 - 强制下载
+// 7.1 下载下拉菜单 - 强制下载 + 手机竖屏裁剪
 // ============================================================
 downloadBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -678,9 +678,17 @@ function downloadImage(index, resolution) {
     var res = resolutions[resolution] || resolutions['fhd'];
     var downloadUrl = url;
     
-    if (url.indexOf('th?id=') !== -1) {
-        var baseUrl = url.split('&')[0];
-        downloadUrl = baseUrl + '&w=' + res.w + '&h=' + res.h;
+    // ★★★ 手机模式：请求竖屏尺寸，自动裁剪 ★★★
+    if (resolution === 'mobile') {
+        if (url.indexOf('th?id=') !== -1) {
+            var baseUrl = url.split('&')[0];
+            downloadUrl = baseUrl + '&w=1080&h=1920&crop=1';
+        }
+    } else {
+        if (url.indexOf('th?id=') !== -1) {
+            var baseUrl = url.split('&')[0];
+            downloadUrl = baseUrl + '&w=' + res.w + '&h=' + res.h;
+        }
     }
     
     var fileName = 'wallpaper_' + (item.date || '') + '_' + resolution + '.jpg';
@@ -716,7 +724,6 @@ function downloadImage(index, resolution) {
     .catch(function(err) {
         console.warn('⚠️ Fetch 下载失败，使用备用方法:', err.message);
         
-        // ★★★ 备用方法 ★★★
         var link = document.createElement('a');
         link.href = downloadUrl + (downloadUrl.indexOf('?') === -1 ? '?' : '&') + '_t=' + Date.now();
         link.download = fileName;
