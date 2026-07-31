@@ -1,4 +1,4 @@
-// scripts/fetch.js - 完全不依赖 sharp
+// scripts/fetch.js - 支持强制指定日期
 
 const fs = require('fs');
 const path = require('path');
@@ -13,6 +13,10 @@ const URLS_FILE = path.join(__dirname, '../urls.txt');
 const COPYRIGHTS_FILE = path.join(__dirname, '../copyrights.txt');
 
 const PAGE_SIZE = 42;
+
+// ★★★ 强制日期（可选）：如果设置了，就用这个日期，否则用今天 ★★★
+// 格式：'2026-07-31'
+const FORCE_DATE = process.env.FORCE_DATE || null;
 
 // 确保目录存在
 [PICTURE_DIR, DATA_DIR, PAGES_DIR].forEach(dir => {
@@ -40,7 +44,14 @@ function prependToFile(filePath, newLine) {
 // ============ 日期工具 ============
 
 function getTargetDate(offset) {
-    const now = new Date();
+    let now;
+    if (FORCE_DATE) {
+        // 使用强制日期
+        const parts = FORCE_DATE.split('-').map(Number);
+        now = new Date(parts[0], parts[1] - 1, parts[2]);
+    } else {
+        now = new Date();
+    }
     now.setDate(now.getDate() + offset);
     const y = now.getFullYear();
     const m = String(now.getMonth() + 1).padStart(2, '0');
@@ -77,6 +88,8 @@ async function fetchBingWallpaper(offset) {
             console.log(`⚠️ 非标准图片链接: ${imageUrl}`);
             return { valid: false, data: null, date: expectedDate };
         }
+
+        console.log(`📅 期望日期: ${expectedDate}, API 日期: ${apiDate}`);
 
         return {
             valid: true,
@@ -192,6 +205,9 @@ function generatePagination(data) {
 
 async function main() {
     console.log('🚀 开始处理壁纸...');
+    if (FORCE_DATE) {
+        console.log(`📌 强制使用日期: ${FORCE_DATE}`);
+    }
     console.log(`📅 今天是: ${getTargetDate(0)}`);
     console.log(`⏰ 当前时间: ${new Date().toLocaleString('zh-CN')}`);
     console.log('');
@@ -200,7 +216,7 @@ async function main() {
     const newResults = [];
 
     for (const offset of offsets) {
-        console.log(`\n--- 抓取 offset=${offset} ---`);
+        console.log(`\n--- 抓取 offset=${offset} (idx=${-offset}) ---`);
         const { valid, data, date } = await fetchBingWallpaper(offset);
         
         if (!valid || !data) {
