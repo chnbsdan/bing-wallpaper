@@ -27,18 +27,10 @@ jobs:
         with:
           node-version: '20'
 
-      # ★★★ 安装 sharp 系统依赖 ★★★
-      - name: 安装系统依赖
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libvips-dev libglib2.0-dev
-
-      - name: 安装 Node 依赖
+      - name: 安装依赖
         run: |
           npm install
-          npm rebuild sharp
-          # 验证 sharp 是否可用
-          node -e "try { require('sharp'); console.log('✅ sharp 可用'); } catch(e) { console.error('❌ sharp 不可用:', e.message); process.exit(1); }"
+          echo "✅ 依赖安装完成"
 
       - name: 抓取壁纸
         id: fetch
@@ -46,14 +38,13 @@ jobs:
           echo "开始抓取壁纸..."
           npm run fetch 2>&1 | tee fetch.log
           
-          if git status --porcelain | grep -qE '(picture|webp|data|urls\.txt|copyrights\.txt)'; then
+          if git status --porcelain | grep -qE '(picture|data|urls\.txt|copyrights\.txt)'; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "✅ 有新的壁纸需要提交"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "📭 没有新的壁纸"
           fi
-        continue-on-error: true
 
       - name: 显示日志
         if: always()
@@ -71,7 +62,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           git pull origin main --rebase --no-edit || true
-          git add picture/ webp/ data/ urls.txt copyrights.txt 2>/dev/null || true
+          git add picture/ data/ urls.txt copyrights.txt 2>/dev/null || true
           
           if git diff --staged --quiet; then
             echo "没有新壁纸需要提交"
