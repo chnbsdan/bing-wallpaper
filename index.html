@@ -37,39 +37,18 @@
         </div>
     </div>
 
-    <!-- ===== 评论弹窗 ===== -->
-    <div class="comment-overlay" id="commentOverlay">
-        <div class="comment-modal">
-            <div class="comment-header">
-                <h2><i class="fas fa-comment-dots"></i> 留言反馈(请文明发言，留言发送后需要审核才会显示出来)</h2>
-                <button class="close-btn" id="closeCommentBtn"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="comment-body" id="commentBody">
-                <div class="comment-input-area">
-                    <textarea id="commentText" placeholder="欢迎欣赏必应每日一图，有什么想法就留言吧……" rows="2"></textarea>
-                    <div class="comment-input-row">
-                        <input type="text" id="commentNick" placeholder="昵称" />
-                        <input type="email" id="commentEmail" placeholder="邮箱" />
-                        <input type="text" id="commentSite" placeholder="网址" />
-                        <button class="comment-submit-btn" id="commentSubmitBtn">提交</button>
-                    </div>
-                </div>
-                <div class="comment-list-title">
-                    <i class="fas fa-comments"></i>
-                    全部留言 <span class="count" id="commentCount">0</span> 条
-                    <span style="margin-left:auto;font-size:12px;color:var(--text-muted);">
-                        <span class="sort-btn active" id="sortByTime" data-sort="time">正序</span>
-                        <span style="color:var(--text-faint);">|</span>
-                        <span class="sort-btn" id="sortByHeat" data-sort="heat">热度</span>
-                    </span>
-                </div>
-                <div id="tcomment"></div>
-                <div class="comment-load-more" id="commentLoadMore">
-                    <button id="loadMoreBtn">加载更多 <i class="fas fa-chevron-down"></i></button>
-                </div>
-            </div>
+       <!-- ===== 评论弹窗 ===== -->
+<div class="comment-overlay" id="commentOverlay">
+    <div class="comment-modal">
+        <div class="comment-header">
+            <h2><i class="fas fa-comment-dots"></i> 留言反馈(请文明发言，理性交流)</h2>
+            <button class="close-btn" id="closeCommentBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="comment-body" id="commentBody">
+            <div id="tcomment"></div>
         </div>
     </div>
+</div>
 
     <!-- ===== 应用 ===== -->
     <div class="app"><div class="grid" id="grid"></div></div>
