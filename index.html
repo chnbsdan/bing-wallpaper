@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>必应壁纸</title>
+    <title>必应每日壁纸</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <!-- 进度条 -->
+
+    <!-- ===== 进度条 ===== -->
     <div id="progress-bar"></div>
 
-    <!-- 导航栏 -->
+    <!-- ===== 导航栏 ===== -->
     <button class="nav-toggle" id="navToggle" aria-label="切换导航"><i class="fas fa-bars"></i></button>
     <div class="navbar" id="navbar">
         <div class="navbar-header">
-            <div class="logo"><img src="/favicon.ico" alt="Logo" style="width:24px;height:24px;border-radius:4px;" /> Bing <span>Wallpaper</span></div>
+            <div class="logo">
+                <img src="/favicon.ico" alt="Logo" style="width:24px;height:24px;border-radius:4px;" />
+                Bing <span>Wallpaper</span>
+            </div>
         </div>
         <div class="badge"><i class="fas fa-images"></i> <span id="totalNavCount">0</span> 张</div>
         <div class="search-box">
@@ -26,18 +30,51 @@
         </div>
         <div class="nav-actions">
             <button id="homeBtn"><i class="fas fa-home"></i> 首页</button>
+            <button id="commentNavBtn"><i class="fas fa-comment"></i> 留言 <span class="badge-dot"></span></button>
             <a href="/api" target="_blank"><i class="fas fa-code"></i> API</a>
             <a href="https://aoso.hangdn.com" target="_blank" rel="noopener"><i class="fas fa-blog"></i> 博客</a>
             <button id="themeToggle"><i class="fas fa-moon"></i></button>
         </div>
     </div>
 
-    <!-- 应用 -->
-    <div class="app">
-        <div class="grid" id="grid"></div>
+    <!-- ===== 评论弹窗 ===== -->
+    <div class="comment-overlay" id="commentOverlay">
+        <div class="comment-modal">
+            <div class="comment-header">
+                <h2><i class="fas fa-comment-dots"></i> 留言反馈(请文明发言，留言发送后需要审核才会显示出来)</h2>
+                <button class="close-btn" id="closeCommentBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="comment-body" id="commentBody">
+                <div class="comment-input-area">
+                    <textarea id="commentText" placeholder="欢迎欣赏必应每日一图，有什么想法就留言吧……" rows="2"></textarea>
+                    <div class="comment-input-row">
+                        <input type="text" id="commentNick" placeholder="昵称" />
+                        <input type="email" id="commentEmail" placeholder="邮箱" />
+                        <input type="text" id="commentSite" placeholder="网址" />
+                        <button class="comment-submit-btn" id="commentSubmitBtn">提交</button>
+                    </div>
+                </div>
+                <div class="comment-list-title">
+                    <i class="fas fa-comments"></i>
+                    全部留言 <span class="count" id="commentCount">0</span> 条
+                    <span style="margin-left:auto;font-size:12px;color:var(--text-muted);">
+                        <span class="sort-btn active" id="sortByTime" data-sort="time">正序</span>
+                        <span style="color:var(--text-faint);">|</span>
+                        <span class="sort-btn" id="sortByHeat" data-sort="heat">热度</span>
+                    </span>
+                </div>
+                <div id="commentList"></div>
+                <div class="comment-load-more" id="commentLoadMore">
+                    <button id="loadMoreBtn">加载更多 <i class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- 分页 -->
+    <!-- ===== 应用 ===== -->
+    <div class="app"><div class="grid" id="grid"></div></div>
+
+    <!-- ===== 分页 ===== -->
     <div class="pagination" id="pagination">
         <button id="prevBtn" disabled><i class="fas fa-chevron-left"></i> 上一页</button>
         <span class="page-info" id="pageInfo">第 1 / 1 页</span>
@@ -49,77 +86,67 @@
         </div>
     </div>
 
-    <!-- 大图预览 -->
-    <div class="overlay" id="overlay">
-        <div class="image-container" id="imageContainer">
-            <img class="preview-image" id="previewImg" src="" alt="预览" />
-        </div>
+    <!-- ============================================================
+    大图预览
+    ============================================================ -->
+    <div class="preview-overlay" id="previewOverlay">
         <button class="arrow arrow-left" id="prevPreviewBtn"><i class="fas fa-chevron-left"></i></button>
         <button class="arrow arrow-right" id="nextPreviewBtn"><i class="fas fa-chevron-right"></i></button>
-        <div class="action-buttons">
-            <button class="btn-download" id="downloadBtn"><i class="fas fa-download"></i> 下载</button>
-            <button class="btn-detail" id="detailBtn"><i class="fas fa-circle-info"></i> 详情</button>
-            <button class="btn-close" id="closeBtn"><i class="fas fa-times"></i></button>
+
+        <div class="preview-container">
+            <img class="preview-image" id="previewImg" src="" alt="预览" />
         </div>
-        <div class="meta" id="previewMeta">
-            <span id="previewTitle"></span>
-            <span class="date" id="previewDate"></span>
-        </div>
-        <div class="detail-overlay" id="detailOverlay"></div>
-        <div class="detail-panel" id="detailPanel">
-            <div class="detail-panel-header"><h2><i class="fas fa-circle-info"></i> 图片详情</h2><button class="detail-panel-close" id="detailPanelClose"><i class="fas fa-times"></i></button></div>
-            <div class="detail-panel-body">
-                <div class="detail-item"><span class="detail-label"><i class="fas fa-calendar-day"></i> 日期</span><span class="detail-value" id="detailDate">-</span></div>
-                <div class="detail-item"><span class="detail-label"><i class="fas fa-tag"></i> 标题</span><span class="detail-value" id="detailTitle">-</span></div>
-                <div class="detail-item"><span class="detail-label"><i class="fas fa-copyright"></i> 版权</span><span class="detail-value" id="detailCopyright">-</span></div>
-                <div class="detail-item"><span class="detail-label"><i class="fas fa-globe"></i> 地区</span><span class="detail-value" id="detailLocale">-</span></div>
-                <div class="detail-item"><span class="detail-label"><i class="fas fa-image"></i> 分辨率</span><span class="detail-value" id="detailResolution">1920 x 1080</span></div>
-                <div class="detail-item" style="border-bottom: none; padding-top: 8px; padding-bottom: 4px;">
-                    <span class="detail-value" style="font-size: 14px; color: var(--text-secondary); opacity: 0.6; user-select: none;">
-                        <i class="fas fa-shield-alt" style="margin-right: 6px; color: var(--accent-color); opacity: 0.4;"></i>本站仅聚合 Bing 官方壁纸链接，图片版权归微软及原作者所有。
-                    </span>
+
+        <div class="toolbar" id="toolbar">
+            <a href="/" class="btn" title="返回首页"><i class="fas fa-home"></i> <span>首页</span></a>
+
+            <div class="dropdown" id="downloadDropdown">
+                <button class="btn" id="downloadBtn"><i class="fas fa-download"></i> <span>下载</span> <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-menu" id="downloadMenu">
+                    <a href="#" data-res="4k">4K (3840×2160)</a>
+                    <a href="#" data-res="fhd">全高清 (1920×1080)</a>
+                    <a href="#" data-res="hd">高清 (1366×768)</a>
+                    <div class="divider"></div>
+                    <a href="#" data-res="mobile">手机 (1080×1920)</a>
                 </div>
-                <div class="detail-item"><span class="detail-label"><i class="fas fa-link"></i> 原图链接</span><span class="detail-value"><a href="#" id="detailLink" target="_blank"><i class="fas fa-external-link-alt"></i> 打开原图</a></span></div>
             </div>
+
+            <div class="donate-qr-wrapper">
+                <button class="btn" id="donateBtn"><i class="fas fa-heart" style="color:#ff6b6b;"></i> <span>捐赠</span></button>
+                <div class="qr-tooltip">
+                    <div class="qr-row">
+                        <div class="qr-item">
+                            <img src="https://img.hangdn.com/hd/wechat.png" alt="微信支付" />
+                            <span class="qr-label wechat"><i class="fab fa-weixin"></i> 微信支付</span>
+                        </div>
+                        <div class="qr-item">
+                            <img src="https://img.hangdn.com/hd/alipay.png" alt="支付宝" />
+                            <span class="qr-label alipay"><i class="fab fa-alipay"></i> 支付宝</span>
+                        </div>
+                    </div>
+                    <div class="qr-footer">❤️ 您的支持是我持续更新的动力</div>
+                </div>
+            </div>
+
+            <button class="btn" id="closePreviewBtn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <div class="copyright" id="previewCopyright"></div>
+            <div class="date" id="previewDate"></div>
+            <div class="desc" id="previewDesc"></div>
         </div>
     </div>
 
-    <!-- 分辨率选择面板 -->
-    <div class="resolution-overlay" id="resolutionOverlay"></div>
-    <div class="resolution-panel" id="resolutionPanel">
-        <div class="resolution-header">
-            <span><i class="fas fa-download"></i> 选择分辨率</span>
-            <button class="resolution-close" id="resolutionClose"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="resolution-body">
-            <div class="resolution-section">
-                <div class="resolution-label">横屏</div>
-                <div class="resolution-grid">
-                    <button class="resolution-btn" data-width="3840" data-height="2160">UHD (4K)</button>
-                    <button class="resolution-btn" data-width="1920" data-height="1200">1920×1200</button>
-                    <button class="resolution-btn" data-width="1920" data-height="1080">1920×1080</button>
-                    <button class="resolution-btn" data-width="1366" data-height="768">1366×768</button>
-                    <button class="resolution-btn" data-width="1024" data-height="768">1024×768</button>
-                </div>
-            </div>
-            <div class="resolution-section">
-                <div class="resolution-label">竖屏 / 手机</div>
-                <div class="resolution-grid">
-                    <button class="resolution-btn" data-width="1080" data-height="1920">1080×1920</button>
-                    <button class="resolution-btn" data-width="768" data-height="1280">768×1280</button>
-                    <button class="resolution-btn" data-width="720" data-height="1280">720×1280</button>
-                    <button class="resolution-btn" data-width="480" data-height="800">480×800</button>
-                </div>
-            </div>
+    <!-- ===== 捐赠浮窗（已废弃） ===== -->
+    <div class="donate-modal" id="donateModal">
+        <div class="donate-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://bing.ee123.net/donate" alt="捐赠二维码" />
+            <p>扫码支持本站<br /><span style="font-size:12px;opacity:0.5;">您的支持是我持续更新的动力 ❤️</span></p>
+            <button class="close-donate" id="closeDonate">关闭</button>
         </div>
     </div>
 
-    <script src="/js/config.js"></script>
-    <script src="/js/theme.js"></script>
-    <script src="/js/nav.js"></script>
-    <script src="/js/api.js"></script>
-    <script src="/js/render.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/preview.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
