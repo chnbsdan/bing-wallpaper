@@ -478,7 +478,7 @@ html, body {
 .info-panel .desc { font-size: 14px; color: rgba(255, 255, 255, 0.5); margin-top: 6px; max-width: 600px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; line-height: 1.6; }
 
 /* ============================================================
-   评论弹窗 - 容器样式
+   ★★★ 评论弹窗 + Twikoo 样式 ★★★
    ============================================================ */
 .comment-overlay {
     display: none;
@@ -563,21 +563,17 @@ html, body {
 .comment-body::-webkit-scrollbar { width: 4px; }
 .comment-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
 
-/* ============================================================
-   ★★★ Twikoo 评论样式 - 亮色模式 ★★★
-   ============================================================ */
+/* ---- 亮色模式 ---- */
 .tk-comments {
     background: transparent !important;
     color: #333333 !important;
 }
-
 .tk-comment {
     background: transparent !important;
     color: #333333 !important;
     border-bottom: 1px solid #f0f0f0 !important;
     padding: 16px 0 !important;
 }
-
 .tk-input {
     background: #f5f7fa !important;
     border: 1px solid #e8ecf1 !important;
@@ -585,42 +581,34 @@ html, body {
     padding: 16px 18px !important;
     margin-bottom: 24px !important;
 }
-
 .tk-input textarea,
-.tk-input input[type="text"],
-.tk-input input[type="email"],
-.tk-input input[type="url"] {
+.tk-input input {
     color: #1a1a2e !important;
     background: transparent !important;
     border: none !important;
     font-size: 15px !important;
     padding: 4px 0 !important;
 }
-
 .tk-input textarea::placeholder,
 .tk-input input::placeholder {
     color: #aaa !important;
 }
-
 .tk-comment .tk-nick,
 .tk-comment .tk-nick a {
     color: #1a1a2e !important;
     font-weight: 600 !important;
     font-size: 15px !important;
 }
-
 .tk-comment .tk-content,
 .tk-comment .tk-content p {
     color: #333333 !important;
     font-size: 15px !important;
     line-height: 1.7 !important;
 }
-
 .tk-comment .tk-time {
     color: #aaa !important;
     font-size: 12px !important;
 }
-
 .tk-comment .tk-actions .tk-action {
     color: #999 !important;
     font-size: 13px !important;
@@ -628,11 +616,9 @@ html, body {
 .tk-comment .tk-actions .tk-action:hover {
     color: #4fc3f7 !important;
 }
-
 .tk-comment .tk-like .tk-like-count {
     color: #999 !important;
 }
-
 .tk-submit .tk-btn {
     background: #4fc3f7 !important;
     color: #ffffff !important;
@@ -645,7 +631,6 @@ html, body {
 .tk-submit .tk-btn:hover {
     opacity: 0.85 !important;
 }
-
 .tk-meta .tk-count {
     color: #666 !important;
     font-size: 14px !important;
@@ -658,7 +643,6 @@ html, body {
 .tk-meta .tk-order.active {
     color: #4fc3f7 !important;
 }
-
 .tk-loading .tk-load-more {
     color: #aaa !important;
     font-size: 13px !important;
@@ -667,13 +651,11 @@ html, body {
 .tk-loading .tk-load-more:hover {
     color: #4fc3f7 !important;
 }
-
 .tk-empty {
     color: #aaa !important;
     text-align: center !important;
     padding: 40px 20px !important;
 }
-
 .tk-comment .tk-admin-tag {
     background: rgba(79, 195, 247, 0.15) !important;
     color: #4fc3f7 !important;
@@ -682,14 +664,11 @@ html, body {
     font-size: 12px !important;
 }
 
-/* ============================================================
-   ★★★ Twikoo 评论样式 - 暗色模式 ★★★
-   ============================================================ */
+/* ---- 暗色模式 ---- */
 [data-theme="dark"] .comment-modal {
     background: #1a1a2e !important;
     border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
-
 [data-theme="dark"] .comment-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
@@ -703,69 +682,56 @@ html, body {
     background: rgba(255, 255, 255, 0.06) !important;
     color: #ffffff !important;
 }
-
 [data-theme="dark"] .comment-body {
     background: #1a1a2e !important;
 }
-
 [data-theme="dark"] .tk-comments {
     background: transparent !important;
     color: #ffffff !important;
 }
-
 [data-theme="dark"] .tk-comment {
     background: transparent !important;
     color: #ffffff !important;
     border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
-
 [data-theme="dark"] .tk-input {
-    background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
-
 [data-theme="dark"] .tk-input textarea,
 [data-theme="dark"] .tk-input input {
     color: #ffffff !important;
     background: transparent !important;
     border: none !important;
 }
-
 [data-theme="dark"] .tk-input textarea::placeholder,
 [data-theme="dark"] .tk-input input::placeholder {
-    color: rgba(255, 255, 255, 0.4) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
 }
-
 [data-theme="dark"] .tk-comment .tk-nick,
 [data-theme="dark"] .tk-comment .tk-nick a {
     color: #ffffff !important;
 }
-
 [data-theme="dark"] .tk-comment .tk-content,
 [data-theme="dark"] .tk-comment .tk-content p {
     color: rgba(255, 255, 255, 0.9) !important;
 }
-
 [data-theme="dark"] .tk-comment .tk-time {
     color: rgba(255, 255, 255, 0.4) !important;
 }
-
 [data-theme="dark"] .tk-comment .tk-actions .tk-action {
     color: rgba(255, 255, 255, 0.5) !important;
 }
 [data-theme="dark"] .tk-comment .tk-actions .tk-action:hover {
     color: #4fc3f7 !important;
 }
-
 [data-theme="dark"] .tk-comment .tk-like .tk-like-count {
     color: rgba(255, 255, 255, 0.5) !important;
 }
-
 [data-theme="dark"] .tk-submit .tk-btn {
     background: #4fc3f7 !important;
     color: #ffffff !important;
 }
-
 [data-theme="dark"] .tk-meta .tk-count {
     color: rgba(255, 255, 255, 0.6) !important;
 }
@@ -775,151 +741,15 @@ html, body {
 [data-theme="dark"] .tk-meta .tk-order.active {
     color: #4fc3f7 !important;
 }
-
 [data-theme="dark"] .tk-loading .tk-load-more {
     color: rgba(255, 255, 255, 0.4) !important;
 }
 [data-theme="dark"] .tk-loading .tk-load-more:hover {
     color: #4fc3f7 !important;
 }
-
 [data-theme="dark"] .tk-empty {
     color: rgba(255, 255, 255, 0.3) !important;
 }
-
-[data-theme="dark"] .tk-comment .tk-admin-tag {
-    background: rgba(79, 195, 247, 0.2) !important;
-    color: #4fc3f7 !important;
-}
-
-/* ============================================================
-   ★★★ 评论弹窗 - 暗色模式强制深色背景 ★★★
-   ============================================================ */
-
-/* 评论弹窗整体 - 暗色模式 */
-[data-theme="dark"] .comment-modal {
-    background: #1a1a2e !important;  /* 深色背景 */
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-/* 评论弹窗头部 - 暗色模式 */
-[data-theme="dark"] .comment-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-[data-theme="dark"] .comment-header h2 {
-    color: #ffffff !important;
-}
-
-[data-theme="dark"] .comment-header .close-btn {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-[data-theme="dark"] .comment-header .close-btn:hover {
-    background: rgba(255, 255, 255, 0.06) !important;
-    color: #ffffff !important;
-}
-
-/* 评论弹窗 body - 暗色模式 */
-[data-theme="dark"] .comment-body {
-    background: #1a1a2e !important;
-}
-
-/* ★★★ Twikoo 评论区 - 暗色模式强制深色背景 ★★★ */
-[data-theme="dark"] .tk-comments {
-    background: #1a1a2e !important;
-    color: #ffffff !important;
-}
-
-[data-theme="dark"] .tk-comment {
-    background: transparent !important;
-    color: #ffffff !important;
-    border-bottom-color: rgba(255, 255, 255, 0.06) !important;
-}
-
-/* 输入框 - 暗色模式 */
-[data-theme="dark"] .tk-input {
-    background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-[data-theme="dark"] .tk-input textarea,
-[data-theme="dark"] .tk-input input {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-[data-theme="dark"] .tk-input textarea::placeholder,
-[data-theme="dark"] .tk-input input::placeholder {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* 昵称 - 暗色模式 */
-[data-theme="dark"] .tk-comment .tk-nick,
-[data-theme="dark"] .tk-comment .tk-nick a {
-    color: #ffffff !important;
-}
-
-/* 评论内容 - 暗色模式 */
-[data-theme="dark"] .tk-comment .tk-content,
-[data-theme="dark"] .tk-comment .tk-content p {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* 时间 - 暗色模式 */
-[data-theme="dark"] .tk-comment .tk-time {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* 操作按钮（回复、点赞等）- 暗色模式 */
-[data-theme="dark"] .tk-comment .tk-actions .tk-action {
-    color: rgba(255, 255, 255, 0.5) !important;
-}
-
-[data-theme="dark"] .tk-comment .tk-actions .tk-action:hover {
-    color: #4fc3f7 !important;
-}
-
-/* 点赞数 - 暗色模式 */
-[data-theme="dark"] .tk-comment .tk-like .tk-like-count {
-    color: rgba(255, 255, 255, 0.5) !important;
-}
-
-/* 提交按钮 - 暗色模式 */
-[data-theme="dark"] .tk-submit .tk-btn {
-    background: #4fc3f7 !important;
-    color: #ffffff !important;
-}
-
-/* 评论计数 - 暗色模式 */
-[data-theme="dark"] .tk-meta .tk-count {
-    color: rgba(255, 255, 255, 0.6) !important;
-}
-
-[data-theme="dark"] .tk-meta .tk-order {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-[data-theme="dark"] .tk-meta .tk-order.active {
-    color: #4fc3f7 !important;
-}
-
-/* 加载更多 - 暗色模式 */
-[data-theme="dark"] .tk-loading .tk-load-more {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-[data-theme="dark"] .tk-loading .tk-load-more:hover {
-    color: #4fc3f7 !important;
-}
-
-/* 空状态 - 暗色模式 */
-[data-theme="dark"] .tk-empty {
-    color: rgba(255, 255, 255, 0.3) !important;
-}
-
-/* 管理员标签 - 暗色模式 */
 [data-theme="dark"] .tk-comment .tk-admin-tag {
     background: rgba(79, 195, 247, 0.2) !important;
     color: #4fc3f7 !important;
@@ -948,6 +778,10 @@ html, body {
     .donate-qr-wrapper .qr-tooltip { min-width: 260px; padding: 10px 12px; }
     .donate-qr-wrapper .qr-tooltip .qr-item img { width: 110px; height: 110px; }
     .donate-qr-wrapper .qr-tooltip .qr-row { gap: 12px; }
+    .comment-modal { width: 95%; max-height: 90vh; border-radius: 12px; }
+    .comment-header { padding: 14px 16px 10px; }
+    .comment-header h2 { font-size: 16px; }
+    .comment-body { padding: 14px 16px 12px; }
 }
 @media (max-width: 576px) {
     .grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(9, 1fr); }
@@ -956,15 +790,6 @@ html, body {
     .donate-qr-wrapper .qr-tooltip .qr-item img { width: 90px; height: 90px; }
     .donate-qr-wrapper .qr-tooltip .qr-row { gap: 10px; }
     .donate-qr-wrapper .qr-tooltip .qr-item .qr-label { font-size: 10px; }
-    .comment-modal { width: 95%; max-height: 90vh; border-radius: 12px; }
-    .comment-header { padding: 14px 16px 10px; }
-    .comment-header h2 { font-size: 16px; }
-    .comment-body { padding: 14px 16px 12px; }
-    .comment-input-area { padding: 12px; }
-    .comment-input-row input { min-width: 70px; font-size: 12px; }
-    .comment-input-row { gap: 6px; }
-    .comment-item .comment-content { padding-left: 0; margin-top: 4px; }
-    .comment-item .comment-actions { padding-left: 0; }
 }
 @media (max-width: 400px) {
     .grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(6, 1fr); gap: 2px; padding: 2px; }
@@ -1001,8 +826,4 @@ html, body {
     .comment-modal { width: 98%; max-height: 92vh; border-radius: 8px; }
     .comment-header h2 { font-size: 14px; }
     .comment-body { padding: 10px 12px 8px; }
-    .comment-input-area textarea { min-height: 40px; font-size: 13px; }
-    .comment-input-row input { font-size: 11px; padding: 4px 8px; }
-    .comment-submit-btn { font-size: 12px; padding: 4px 14px; }
-    .comment-item .comment-content { font-size: 13px; }
 }
