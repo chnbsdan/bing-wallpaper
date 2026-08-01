@@ -661,4 +661,24 @@ previewImg.addEventListener('wheel', wheelZoom, { passive: false });
 loadData();
 console.log('✅ 大图预览已加载');
 console.log('💡 留言按钮在导航栏（汉堡菜单）内');
-console.log('💡 评论接口: ' + COMMENT_API);
+console.log('💡 评论系统: Twikoo');
+
+// 暴露 openComment 给 API 页面调用
+window.openComment = openComment;
+
+// 检测 URL 参数，自动打开留言弹窗
+(function checkUrlAction() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('action') === 'comment') {
+        setTimeout(function() {
+            if (typeof openComment === 'function') {
+                openComment();
+            }
+            // 清除 URL 参数
+            if (window.history && window.history.replaceState) {
+                var cleanUrl = window.location.pathname + window.location.hash;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        }, 500);
+    }
+})();
