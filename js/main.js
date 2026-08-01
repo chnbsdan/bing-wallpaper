@@ -241,13 +241,16 @@ function renderPage(page) {
         var card = document.createElement('div');
         card.className = 'card';
 
-        var imgSrc = getImageUrl(item.webp || item.jpg || '');
+        // ★★★ 1. 优先使用缩略图 thumb ★★★
+        var thumbSrc = getImageUrl(item.thumb || item.webp || item.jpg || '');
+        // ★★★ 2. 高清原图（作为备选，当缩略图加载失败时使用）★★★
+        var fullImgSrc = getImageUrl(item.webp || item.jpg || '');
         var fallback = getImageUrl(item.jpg || '');
-        var placeholderSrc = getThumbnailUrl(imgSrc);
+        var placeholderSrc = getThumbnailUrl(thumbSrc);
 
         card.innerHTML =
             '<div class="placeholder-bg" style="background-image: url(' + placeholderSrc + ');"></div>' +
-            '<img src="' + imgSrc + '" alt="' + (item.copyright || item.date) + '" loading="lazy" />' +
+            '<img src="' + thumbSrc + '" alt="' + (item.copyright || item.date) + '" loading="lazy" />' +
             '<div class="info">' +
             '<div class="date">' + item.date + '</div>' +
             '<div class="title">' + (item.copyright || '无标题') + '</div>' +
@@ -265,11 +268,14 @@ function renderPage(page) {
             img.classList.add('loaded');
             placeholderBg.classList.add('hidden');
         }
+        // ★★★ 缩略图加载失败时，回退到高清原图 ★★★
         img.addEventListener('error', function() {
-            if (fallback && fallback !== imgSrc) {
-                img.src = fallback;
+            if (fullImgSrc && fullImgSrc !== thumbSrc) {
+                this.src = fullImgSrc;
+            } else if (fallback && fallback !== thumbSrc) {
+                this.src = fallback;
             } else {
-                img.classList.add('loaded');
+                this.classList.add('loaded');
                 placeholderBg.classList.add('hidden');
             }
         });
