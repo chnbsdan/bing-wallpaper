@@ -1,4 +1,4 @@
-// scripts/fetch.js - 完整版（带缩略图字段）
+// scripts/fetch.js - 完整版（修复日期问题，使用 API 真实日期）
 
 const fs = require('fs');
 const path = require('path');
@@ -27,7 +27,6 @@ function getThumbnailUrl(url) {
     if (!url) return '';
     if (url.indexOf('th?id=') !== -1) {
         var baseUrl = url.split('&')[0];
-        // 替换为 800x450 缩略图
         var thumbUrl = baseUrl.replace('_UHD.jpg', '_1920x1080.jpg');
         return thumbUrl + '&w=800&h=450';
     }
@@ -90,7 +89,7 @@ function formatToUHD(url) {
     return formatted;
 }
 
-// ============ API 请求 ============
+// ============ ★★★ API 请求（返回真实日期）★★★ ============
 
 async function fetchBingWallpaper(offset) {
     const idx = -offset;
@@ -123,7 +122,7 @@ async function fetchBingWallpaper(offset) {
                 url: imageUrl,
                 copyright: image.copyright || ''
             },
-            date: expectedDate,
+            date: apiDate || expectedDate,  // ★★★ 优先使用 API 真实日期 ★★★
             apiDate: apiDate
         };
 
@@ -164,43 +163,23 @@ async function downloadWallpaper(wallpaper, dateStr) {
     }
 }
 
-// ============ ★★★ 从 urls.txt 读取历史数据（含缩略图）★★★ ============
+// ============ ★★★ 从 wallpapers.json 读取历史数据 ★★★ ============
 
 function loadHistoricalData() {
-    const urls = readLines(URLS_FILE);
-    const copyrights = readLines(COPYRIGHTS_FILE);
-    
-    if (urls.length === 0) return [];
-
-    const pairedData = [];
-    const maxLen = Math.max(urls.length, copyrights.length);
-    
-    for (let i = 0; i < maxLen; i++) {
-        const url = urls[i] || '';
-        const copyright = copyrights[i] || '';
-        if (url) {
-            pairedData.push({ url, copyright });
-        }
+    if (!fs.existsSync(DATA_FILE)) {
+        console.log('📭 wallpapers.json 不存在，返回空数据');
+        return [];
     }
 
-    const today = new Date();
-    return pairedData.map((item, index) => {
-        const d = new Date(today);
-        d.setDate(d.getDate() - index);
-        const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, '0');
-        const day = String(d.getDate()).padStart(2, '0');
-        const dateStr = `${y}-${m}-${day}`;
-        
-        // ★★★ 添加 thumb 字段 ★★★
-        return {
-            date: dateStr,
-            copyright: item.copyright || '',
-            jpg: item.url,
-            webp: item.url,
-            thumb: getThumbnailUrl(item.url)  // ★★★ 缩略图 ★★★
-        };
-    });
+    try {
+        const content = fs.readFileSync(DATA_FILE, 'utf-8');
+        const data = JSON.parse(content);
+        console.log(`📂 从 wallpapers.json 读取 ${data.length} 条历史数据`);
+        return data;
+    } catch (e) {
+        console.error('⚠️ 读取 wallpapers.json 失败:', e.message);
+        return [];
+    }
 }
 
 // ============ 清理过期图片 ============
@@ -265,41 +244,54 @@ function generatePagination(data) {
     console.log(`📄 生成 ${totalPages} 个分页文件 (每页 ${PAGE_SIZE} 条)`);
 }
 
-// ============ 主流程 ============
+// ============ ★★★ 主流程（使用 API 真实日期）★★★ ============
 
 async function main() {
     console.log('🚀 开始处理壁纸...');
     console.log(`📅 今天是: ${getTargetDate(0)}`);
     console.log('');
 
-    const offsets = [0, 1];
+    // ★★★ 抓取最近 6 天，确保覆盖所有可能的情况 ★★★
+    const offsets = [0, 1, 2, 3, 4, 5];
     const newResults = [];
 
     for (const offset of offsets) {
-        const { valid, data, date } = await fetchBingWallpaper(offset);
-        if (!valid || !data) continue;
+        const result = await fetchBingWallpaper(offset);
+        if (!result.valid || !result.data) continue;
 
-        const downloaded = await downloadWallpaper(data, date);
+        const { data, date } = result;  // ★★★ date 现在是 API 真实日期 ★★★
+        const realDate = date;
+
+        // 检查该日期是否已存在
+        if (fs.existsSync(path.join(PICTURE_DIR, `${realDate}.jpg`))) {
+            console.log(`⏭️ ${realDate} 已存在，跳过`);
+            continue;
+        }
+
+        console.log(`📋 offset=${offset} → 真实日期: ${realDate}`);
+
+        const downloaded = await downloadWallpaper(data, realDate);
         if (downloaded) {
-            // ★★★ 添加 thumb 字段 ★★★
             const cdnEntry = {
-                date: date,
+                date: realDate,
                 copyright: data.copyright || '',
                 jpg: data.url,
                 webp: data.url,
-                thumb: getThumbnailUrl(data.url)  // ★★★ 缩略图 ★★★
+                thumb: getThumbnailUrl(data.url)
             };
             newResults.push(cdnEntry);
-            console.log(`✅ ${date}`);
+            console.log(`✅ ${realDate}`);
             prependToFile(URLS_FILE, data.url);
             prependToFile(COPYRIGHTS_FILE, data.copyright);
         }
         await new Promise(r => setTimeout(r, 300));
     }
 
+    // ★★★ 从 wallpapers.json 读取历史数据 ★★★
     const historicalData = loadHistoricalData();
     console.log(`📂 历史数据: ${historicalData.length} 条`);
 
+    // ★★★ 合并数据，新数据覆盖旧数据（按日期去重）★★★
     const dataMap = new Map();
     historicalData.forEach(item => {
         if (item.date) dataMap.set(item.date, item);
@@ -307,6 +299,37 @@ async function main() {
     newResults.forEach(item => {
         if (item.date) dataMap.set(item.date, item);
     });
+
+    // ★★★ 从 urls.txt 恢复可能丢失的数据 ★★★
+    // 如果 wallpapers.json 为空，但 urls.txt 有数据，从 urls.txt 重建
+    if (dataMap.size === 0) {
+        const urls = readLines(URLS_FILE);
+        const copyrights = readLines(COPYRIGHTS_FILE);
+        if (urls.length > 0) {
+            console.log('📂 从 urls.txt 重建数据...');
+            const today = new Date();
+            urls.forEach((url, index) => {
+                const d = new Date(today);
+                d.setDate(d.getDate() - index);
+                const y = d.getFullYear();
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                const dateStr = `${y}-${m}-${day}`;
+                const copyright = copyrights[index] || '';
+                // 检查是否已在 dataMap 中
+                if (!dataMap.has(dateStr)) {
+                    dataMap.set(dateStr, {
+                        date: dateStr,
+                        copyright: copyright,
+                        jpg: url,
+                        webp: url,
+                        thumb: getThumbnailUrl(url)
+                    });
+                }
+            });
+            console.log(`📂 从 urls.txt 重建 ${dataMap.size} 条数据`);
+        }
+    }
 
     const finalData = Array.from(dataMap.values())
         .sort((a, b) => b.date.localeCompare(a.date));
