@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-10-14",
+      "copyright": "House on Fire Ruin in Mule Canyon, Cedar Mesa, Utah (© Pete Lomchid/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.OiaSantorini_EN-US0585833457_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.OiaSantorini_EN-US0585833457_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.OiaSantorini_EN-US0585833457_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-10-13",
       "copyright": "Village of Saranac Lake, Adirondack Mountains, New York (© DenisTangneyJr/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.MuleCanyon_EN-US0527899523_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.MinnesotaWaters_EN-US4282198656_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.MinnesotaWaters_EN-US4282198656_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.MinnesotaWaters_EN-US4282198656_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-09-02",
-      "copyright": "Amalgamated Clothing Workers of America in a Labor Day parade, May 1915, Chicago (© Chicago Sun-Times/Chicago Daily News collection/Chicago History Museum/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.DeadvleiTrees_EN-US4233800313_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.DeadvleiTrees_EN-US4233800313_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.DeadvleiTrees_EN-US4233800313_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 8,
   "pageSize": 42,
-  "total": 2009,
+  "total": 2010,
   "totalPages": 48,
   "hasMore": true
 }

@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-11-25",
+      "copyright": "Gwalior Fort, Madhya Pradesh, India (© ImagesofIndia/Shutterstock)",
+      "jpg": "https://cn.bing.com/th?id=OHR.TreviFountain_EN-US6800145474_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.TreviFountain_EN-US6800145474_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.TreviFountain_EN-US6800145474_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-11-24",
       "copyright": "Ammonite fossil from Madagascar (© ThomasLENNE/Shutterstock)",
       "jpg": "https://cn.bing.com/th?id=OHR.GwailorFort_EN-US6671653416_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.AmethystLaccaria_EN-US0640413961_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.AmethystLaccaria_EN-US0640413961_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.AmethystLaccaria_EN-US0640413961_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-10-14",
-      "copyright": "House on Fire Ruin in Mule Canyon, Cedar Mesa, Utah (© Pete Lomchid/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.OiaSantorini_EN-US0585833457_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.OiaSantorini_EN-US0585833457_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.OiaSantorini_EN-US0585833457_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 7,
   "pageSize": 42,
-  "total": 2009,
+  "total": 2010,
   "totalPages": 48,
   "hasMore": true
 }
