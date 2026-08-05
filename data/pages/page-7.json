@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-11-26",
+      "copyright": "The Trevi Fountain in Rome, Italy (© Nico De Pasquale Photography/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.OliveGrove_EN-US7076835672_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.OliveGrove_EN-US7076835672_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.OliveGrove_EN-US7076835672_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-11-25",
       "copyright": "Gwalior Fort, Madhya Pradesh, India (© ImagesofIndia/Shutterstock)",
       "jpg": "https://cn.bing.com/th?id=OHR.TreviFountain_EN-US6800145474_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.SiberianLynx_EN-US0696336220_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.SiberianLynx_EN-US0696336220_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.SiberianLynx_EN-US0696336220_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-10-15",
-      "copyright": "Village of Oia, Santorini, Greece (© f9photos/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.AmethystLaccaria_EN-US0640413961_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.AmethystLaccaria_EN-US0640413961_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.AmethystLaccaria_EN-US0640413961_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 7,
   "pageSize": 42,
-  "total": 2010,
+  "total": 2011,
   "totalPages": 48,
   "hasMore": true
 }
