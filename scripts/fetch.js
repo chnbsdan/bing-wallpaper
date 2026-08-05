@@ -1,4 +1,5 @@
 // scripts/fetch.js - 完整版（修复日期问题，使用 API 真实日期）
+process.env.TZ = 'Asia/Shanghai';  // ← 加在这里，第一行，使用北京时间！
 
 const fs = require('fs');
 const path = require('path');
