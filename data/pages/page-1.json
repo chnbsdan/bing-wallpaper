@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-08-09",
+      "copyright": "约书亚树国家公园，加利福尼亚州，美国 (© JJ Landscapes/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.SandPath_ZH-CN7820825668_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.SandPath_ZH-CN7820825668_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.SandPath_ZH-CN7820825668_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-08-08",
       "copyright": "让-马里·吉巴乌文化中心，新喀里多尼亚 (© Fabien Astre/Alamy)",
       "jpg": "https://cn.bing.com/th?id=OHR.JMTjibaou_ZH-CN6992670356_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.BoraBoraLagoon_EN-US1491116478_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.BoraBoraLagoon_EN-US1491116478_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.BoraBoraLagoon_EN-US1491116478_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2026-06-27",
-      "copyright": "Driftwood on Boneyard Beach, Hunting Island, South Carolina (© Frances/Adobe Stock)",
-      "jpg": "https://cn.bing.com/th?id=OHR.SaguaroSun_EN-US8982109543_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.SaguaroSun_EN-US8982109543_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.SaguaroSun_EN-US8982109543_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 1,
   "pageSize": 42,
-  "total": 2013,
+  "total": 2014,
   "totalPages": 48,
   "hasMore": true
 }
