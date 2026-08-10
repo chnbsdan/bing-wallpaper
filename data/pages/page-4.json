@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-04-05",
+      "copyright": "Colorful handmade wooden Easter eggs, Vilnius, Lithuania (© maximkabb/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.CastleBlossoms_EN-US6202844131_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.CastleBlossoms_EN-US6202844131_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.CastleBlossoms_EN-US6202844131_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-04-04",
       "copyright": "Black grouse males facing off on a lekking site, Estonia (© Sven Zacek/Nature Picture Library)",
       "jpg": "https://cn.bing.com/th?id=OHR.LithuaniaEggs_EN-US5074250791_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.TulumLilies_EN-US2766347819_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.TulumLilies_EN-US2766347819_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.TulumLilies_EN-US2766347819_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2026-02-22",
-      "copyright": "The hill of Mam Tor, Derbyshire, England (© john finney photography/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 4,
   "pageSize": 42,
-  "total": 2014,
+  "total": 2015,
   "totalPages": 48,
   "hasMore": true
 }

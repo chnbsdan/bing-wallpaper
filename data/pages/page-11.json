@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-06-15",
+      "copyright": "Flag display at the US Capitol, Washington, DC (© kmiragaya/Adobe Stock)",
+      "jpg": "https://cn.bing.com/th?id=OHR.RheaDad_EN-US1643943847_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.RheaDad_EN-US1643943847_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.RheaDad_EN-US1643943847_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-06-14",
       "copyright": "Vila Franca Islet, São Miguel Island, Azores, Portugal (© ARoxo/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.FlagCapitolDC_EN-US1553861171_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.CincoFlags_EN-US5873749093_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.CincoFlags_EN-US5873749093_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.CincoFlags_EN-US5873749093_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-05-04",
-      "copyright": "The Milky Way framed by Double Arch in Arches National Park, Utah (© Adventure_Photo/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.SevilleNaboo_EN-US5814352031_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.SevilleNaboo_EN-US5814352031_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.SevilleNaboo_EN-US5814352031_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 11,
   "pageSize": 42,
-  "total": 2014,
+  "total": 2015,
   "totalPages": 48,
   "hasMore": true
 }
