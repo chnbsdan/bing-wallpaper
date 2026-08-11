@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-02-23",
+      "copyright": "Great white egret, Upper Bavaria, Germany (© Konrad Wothe/naturepl.com)",
+      "jpg": "https://cn.bing.com/th?id=OHR.TulumLilies_EN-US2766347819_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.TulumLilies_EN-US2766347819_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.TulumLilies_EN-US2766347819_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-02-22",
       "copyright": "The hill of Mam Tor, Derbyshire, England (© john finney photography/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.WalesWinter_EN-US0191348069_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.WalesWinter_EN-US0191348069_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.WalesWinter_EN-US0191348069_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2026-01-12",
-      "copyright": "Blue walls of Chefchaouen, Morocco (© AnetteAndersen/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.SnowOtters_EN-US0138589680_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.SnowOtters_EN-US0138589680_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.SnowOtters_EN-US0138589680_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 5,
   "pageSize": 42,
-  "total": 2015,
+  "total": 2016,
   "totalPages": 48,
   "hasMore": true
 }
