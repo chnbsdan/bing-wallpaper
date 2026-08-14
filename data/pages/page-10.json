@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-07-31",
+      "copyright": "'Beyond Walls' land-art installation by Saype at Expo 2020 Dubai, United Arab Emirates (© VALENTIN FLAURAUD/EPA-EFE/Shutterstock)",
+      "jpg": "https://cn.bing.com/th?id=OHR.BabyLemur_EN-US9264861498_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.BabyLemur_EN-US9264861498_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.BabyLemur_EN-US9264861498_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-07-30",
       "copyright": "Female Bengal tiger, Kanha National Park, India (© Axel Gomille/Nature Picture Library)",
       "jpg": "https://cn.bing.com/th?id=OHR.SaypeDubai_EN-US5078679271_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.IcelandSolstice_EN-US2057542769_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.IcelandSolstice_EN-US2057542769_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.IcelandSolstice_EN-US2057542769_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-06-19",
-      "copyright": "Asian swallowtail butterfly on a red spider lily (© lzh/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.TexasCapitol_EN-US1992205396_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.TexasCapitol_EN-US1992205396_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.TexasCapitol_EN-US1992205396_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 10,
   "pageSize": 42,
-  "total": 2018,
+  "total": 2019,
   "totalPages": 49,
   "hasMore": true
 }

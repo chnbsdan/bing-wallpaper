@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-01-15",
+      "copyright": "The staircase of the Fortress of Palamidi, Nafplio, Greece (© George Pachantouris/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.ReineSunrise_EN-US0323810872_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.ReineSunrise_EN-US0323810872_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.ReineSunrise_EN-US0323810872_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-01-14",
       "copyright": "Vale of Clwyd, Wales (© Valerie Blencowe/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.PalamidiFortress_EN-US0244863129_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.CopanRuins_EN-US5517813382_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.CopanRuins_EN-US5517813382_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.CopanRuins_EN-US5517813382_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-12-04",
-      "copyright": "Sandhill cranes at sunrise, Bosque del Apache National Wildlife Refuge, New Mexico (© Jack Dykinga/Minden Pictures)",
-      "jpg": "https://cn.bing.com/th?id=OHR.CheetahMound_EN-US5447540393_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.CheetahMound_EN-US5447540393_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.CheetahMound_EN-US5447540393_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 6,
   "pageSize": 42,
-  "total": 2018,
+  "total": 2019,
   "totalPages": 49,
   "hasMore": true
 }

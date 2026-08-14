@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-01-02",
+      "copyright": "Tasmanian snow gum and pandani plants near Lake Dobson, Mount Field National Park, Tasmania, Australia (© Whitworth Images/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.RioNewYear_EN-US7216341802_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.RioNewYear_EN-US7216341802_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.RioNewYear_EN-US7216341802_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-01-01",
       "copyright": "Borobudur Temple, Java, Indonesia (© Robertharding/Shutterstock)",
       "jpg": "https://cn.bing.com/th?id=OHR.MountFieldNP_EN-US6905459745_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.TasmansArch_EN-US4274981499_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.TasmansArch_EN-US4274981499_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.TasmansArch_EN-US4274981499_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2024-11-21",
-      "copyright": "Red deer stag in the Caledonian Forest, Glen Affric, Scottish Highlands (© Terry Whittaker/Alamy)",
-      "jpg": "https://cn.bing.com/th?id=OHR.PorthcawlLighthouse_EN-US4147042402_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.PorthcawlLighthouse_EN-US4147042402_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.PorthcawlLighthouse_EN-US4147042402_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 15,
   "pageSize": 42,
-  "total": 2018,
+  "total": 2019,
   "totalPages": 49,
   "hasMore": true
 }
