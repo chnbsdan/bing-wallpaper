@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2024-08-30",
+      "copyright": "Katahdin Woods and Waters National Monument, Penobscot County, Maine (© Cavan Images/Alamy)",
+      "jpg": "https://cn.bing.com/th?id=OHR.SwiftcurrentLake_EN-US8272209593_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.SwiftcurrentLake_EN-US8272209593_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.SwiftcurrentLake_EN-US8272209593_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2024-08-29",
       "copyright": "Prasat Phanom Rung temple ruins, Buriram province, Thailand (© Banjongseal324/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.KatahdinWoods_EN-US8182768375_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.TateishiPark_EN-US8384642632_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.TateishiPark_EN-US8384642632_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.TateishiPark_EN-US8384642632_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2024-07-19",
-      "copyright": "Fairy chimneys and cave dwellings in Cappadocia, Türkiye (© Storm Is Me/Shutterstock)",
-      "jpg": "https://cn.bing.com/th?id=OHR.LaGeriaLanzarote_EN-US4849523931_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.LaGeriaLanzarote_EN-US4849523931_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.LaGeriaLanzarote_EN-US4849523931_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 18,
   "pageSize": 42,
-  "total": 2019,
+  "total": 2020,
   "totalPages": 49,
   "hasMore": true
 }
