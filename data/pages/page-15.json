@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-01-04",
+      "copyright": "Polar bears at play in the Arctic (© Ondrej Prosicky/Shutterstock)",
+      "jpg": "https://cn.bing.com/th?id=OHR.ArdezSwitzerland_EN-US8405268165_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.ArdezSwitzerland_EN-US8405268165_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.ArdezSwitzerland_EN-US8405268165_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-01-03",
       "copyright": "New Year's Eve fireworks over Copacabana Beach, Rio de Janeiro, Brazil (© Wagner Meier/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.PolarBearSwim_EN-US7610036047_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.LionCubs_EN-US4742616367_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.LionCubs_EN-US4742616367_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.LionCubs_EN-US4742616367_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2024-11-23",
-      "copyright": "Tasmans Arch, Tasmania, Australia (© Gary Bell/Minden Pictures)",
-      "jpg": "https://cn.bing.com/th?id=OHR.BeyondSaype_EN-US4398054405_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.BeyondSaype_EN-US4398054405_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.BeyondSaype_EN-US4398054405_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 15,
   "pageSize": 42,
-  "total": 2020,
+  "total": 2021,
   "totalPages": 49,
   "hasMore": true
 }
