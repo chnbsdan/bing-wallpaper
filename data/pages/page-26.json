@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2023-10-07",
+      "copyright": "Lake Bled at sunrise, Slovenia (© Rasica/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.VuittonFoundation_EN-US2808914200_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.VuittonFoundation_EN-US2808914200_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.VuittonFoundation_EN-US2808914200_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2023-10-06",
       "copyright": "Fall colors in Shenandoah National Park, Virginia (© Michael Ver Sprill/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.LakeBledSunrise_EN-US2708574517_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.EmeraldLakeYukon_EN-US0522450551_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.EmeraldLakeYukon_EN-US0522450551_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.EmeraldLakeYukon_EN-US0522450551_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2023-08-26",
-      "copyright": "Squirrel looking into the lens of a camera (© Alfredo Piedrafita/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.StartPointLight_EN-US0323042936_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.StartPointLight_EN-US0323042936_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.StartPointLight_EN-US0323042936_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 26,
   "pageSize": 42,
-  "total": 2027,
+  "total": 2028,
   "totalPages": 49,
   "hasMore": true
 }

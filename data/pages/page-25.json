@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2023-11-18",
+      "copyright": "Lamps on the banks of the Sarayu River for Diwali, Ayodhya, India (© SANJAY KANOJIA/AFP/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.OliveOrchard_EN-US7903927729_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.OliveOrchard_EN-US7903927729_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.OliveOrchard_EN-US7903927729_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2023-11-17",
       "copyright": "Sunset at the Washington Monument, Washington, DC (© Joe Daniel Price/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.DiwaliAyodhya_EN-US7782727326_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.WhitsundaySwirl_EN-US2946291997_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.WhitsundaySwirl_EN-US2946291997_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.WhitsundaySwirl_EN-US2946291997_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2023-10-07",
-      "copyright": "Lake Bled at sunrise, Slovenia (© Rasica/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.VuittonFoundation_EN-US2808914200_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.VuittonFoundation_EN-US2808914200_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.VuittonFoundation_EN-US2808914200_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 25,
   "pageSize": 42,
-  "total": 2027,
+  "total": 2028,
   "totalPages": 49,
   "hasMore": true
 }
