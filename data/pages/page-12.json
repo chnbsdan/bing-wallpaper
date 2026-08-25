@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-05-19",
+      "copyright": "'The Spirit of Electricity' by Raoul Dufy, Museum of Modern Art, Paris, France (© BERTRAND GUAY/AFP via Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.MountHamilton_EN-US3808058743_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.MountHamilton_EN-US3808058743_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.MountHamilton_EN-US3808058743_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-05-18",
       "copyright": "A delta in the Venetian Lagoon, Italy (© Dimitri Weber/Amazing Aerial Agency)",
       "jpg": "https://cn.bing.com/th?id=OHR.DufyRoom_EN-US3759763345_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.ParoTsechu_EN-US0177055246_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.ParoTsechu_EN-US0177055246_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.ParoTsechu_EN-US0177055246_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-04-07",
-      "copyright": "George Peabody Library, Baltimore, Maryland (© Wim Wiskerke/Alamy)",
-      "jpg": "https://cn.bing.com/th?id=OHR.BeaverDay_EN-US0090956170_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.BeaverDay_EN-US0090956170_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.BeaverDay_EN-US0090956170_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 12,
   "pageSize": 42,
-  "total": 2029,
+  "total": 2030,
   "totalPages": 49,
   "hasMore": true
 }
