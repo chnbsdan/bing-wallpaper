@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-08-12",
+      "copyright": "Village of Santa Maddalena, Dolomites, Italy (© Sakrapee Nopparat/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.KenyaElephants_EN-US8723347309_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.KenyaElephants_EN-US8723347309_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.KenyaElephants_EN-US8723347309_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-08-11",
       "copyright": "Lioness in Maasai Mara National Reserve, Kenya (© Tandem Stock/Adobe Stock)",
       "jpg": "https://cn.bing.com/th?id=OHR.SantaMaddalena_EN-US8546897995_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.MaroonClownfish_EN-US0391262783_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.MaroonClownfish_EN-US0391262783_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.MaroonClownfish_EN-US0391262783_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-07-01",
-      "copyright": "Wolfe Creek Crater, Australia (© Abstract Aerial Art/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.CanadaDayFogo_EN-US0231478181_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.CanadaDayFogo_EN-US0231478181_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.CanadaDayFogo_EN-US0231478181_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 10,
   "pageSize": 42,
-  "total": 2030,
+  "total": 2031,
   "totalPages": 49,
   "hasMore": true
 }
