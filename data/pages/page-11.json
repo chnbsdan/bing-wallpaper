@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-07-05",
+      "copyright": "Fourth of July fireworks over Lake Union in Seattle (© Dixin Yan)",
+      "jpg": "https://cn.bing.com/th?id=OHR.TourCyclists_EN-US0589835009_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.TourCyclists_EN-US0589835009_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.TourCyclists_EN-US0589835009_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-07-04",
       "copyright": "Rainbow River in Rainbow Springs State Park, Florida (© Michel Roggo/Minden Pictures)",
       "jpg": "https://cn.bing.com/th?id=OHR.SeattleFireworks_EN-US0523563675_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.ButchartFlowers_EN-US3361647368_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.ButchartFlowers_EN-US3361647368_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.ButchartFlowers_EN-US3361647368_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-05-24",
-      "copyright": "A Julia butterfly on the nose of a yellow-spotted river turtle, Amazon Region, Ecuador (© Westend61/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.JotunheimenPark_EN-US4200824377_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.JotunheimenPark_EN-US4200824377_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.JotunheimenPark_EN-US4200824377_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 11,
   "pageSize": 42,
-  "total": 2034,
+  "total": 2035,
   "totalPages": 49,
   "hasMore": true
 }
