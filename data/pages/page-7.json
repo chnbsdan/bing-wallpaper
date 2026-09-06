@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-12-27",
+      "copyright": "Salisbury Cathedral, Wiltshire, England (© Julian Elliott Photography/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.SuperiorIceMN_EN-US5952266924_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.SuperiorIceMN_EN-US5952266924_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.SuperiorIceMN_EN-US5952266924_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-12-26",
       "copyright": "Snow globes at a Christmas market in Heidelberg, Germany (© George Pachantouris/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.WiltshireDawn_EN-US5663179833_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.LyonTraboules_EN-US9432784340_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.LyonTraboules_EN-US9432784340_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.LyonTraboules_EN-US9432784340_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-11-15",
-      "copyright": "Mother manatee and calf, Crystal River, Florida (© Gregory Sweeney/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.IrohazakaAutumn_EN-US9137140715_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.IrohazakaAutumn_EN-US9137140715_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.IrohazakaAutumn_EN-US9137140715_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 7,
   "pageSize": 42,
-  "total": 2041,
+  "total": 2042,
   "totalPages": 49,
   "hasMore": true
 }
