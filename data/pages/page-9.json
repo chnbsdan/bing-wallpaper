@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-10-06",
+      "copyright": "Boreal owl in a forest in Central Europe (© Ondrej Prosicky/Alamy)",
+      "jpg": "https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-10-05",
       "copyright": "ISS main solar arrays seen from SpaceX Crew Dragon Endeavour (© NASA)",
       "jpg": "https://cn.bing.com/th?id=OHR.TeacherOwl_EN-US9991815804_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.TrulliHouses_EN-US3489439665_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.TrulliHouses_EN-US3489439665_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.TrulliHouses_EN-US3489439665_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-08-25",
-      "copyright": "European fallow deer, England (© Enrique Aguirre Aves/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.YellowstoneRiver_EN-US3380364726_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.YellowstoneRiver_EN-US3380364726_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.YellowstoneRiver_EN-US3380364726_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 9,
   "pageSize": 42,
-  "total": 2043,
+  "total": 2044,
   "totalPages": 49,
   "hasMore": true
 }
