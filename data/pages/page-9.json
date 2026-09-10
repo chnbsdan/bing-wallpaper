@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-10-08",
+      "copyright": "Fall colors below Mount Sneffels near Ridgway, Colorado (© Grant Ordelheide/TANDEM Stills + Motion)",
+      "jpg": "https://cn.bing.com/th?id=OHR.OctopusCyanea_EN-US0194861123_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.OctopusCyanea_EN-US0194861123_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.OctopusCyanea_EN-US0194861123_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-10-07",
       "copyright": "Anshun Bridge illuminated for the Mid-Autumn Festival, Chengdu, China (© Philippe LEJEANVRE/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.RidgwayAspens_EN-US0136548884_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.WhiteEgret_EN-US3605994040_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.WhiteEgret_EN-US3605994040_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.WhiteEgret_EN-US3605994040_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-08-27",
-      "copyright": "Trullo buildings in Alberobello, Apulia, Italy (© Feng Wei Photography/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.FaroeLake_EN-US3557234950_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.FaroeLake_EN-US3557234950_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.FaroeLake_EN-US3557234950_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 9,
   "pageSize": 42,
-  "total": 2045,
+  "total": 2046,
   "totalPages": 49,
   "hasMore": true
 }
