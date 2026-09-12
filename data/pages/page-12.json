@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2025-06-06",
+      "copyright": "Bottle-cap mural made by Oscar Olivares in Guatire, Venezuela (© FEDERICO PARRA/AFP via Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.NormandyBeach_EN-US8863709180_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.NormandyBeach_EN-US8863709180_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.NormandyBeach_EN-US8863709180_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2025-06-05",
       "copyright": "The beach at Cala Luna, Sardinia, Italy (© guenterguni/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.OlivaresMural_EN-US8824492734_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.RedwoodGrove_EN-US3412092024_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.RedwoodGrove_EN-US3412092024_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.RedwoodGrove_EN-US3412092024_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-04-25",
-      "copyright": "Spire Cove in Kenai Fjords National Park, Seward, Alaska (© Wander Photography/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.MagellanicPenguin_EN-US3332048594_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.MagellanicPenguin_EN-US3332048594_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.MagellanicPenguin_EN-US3332048594_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 12,
   "pageSize": 42,
-  "total": 2047,
+  "total": 2048,
   "totalPages": 49,
   "hasMore": true
 }
