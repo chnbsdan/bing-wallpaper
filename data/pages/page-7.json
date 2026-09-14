@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-01-04",
+      "copyright": "Staubbach Falls at Lauterbrunnen, Canton of Bern, Switzerland (© pongnathee kluaythong/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.KingMountain_EN-US6730743729_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.KingMountain_EN-US6730743729_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.KingMountain_EN-US6730743729_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-01-03",
       "copyright": "Aerial view of Venice, Italy (© Clement Leonard/Getty Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.LauterbrunnenValley_EN-US6594933852_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.GwailorFort_EN-US6671653416_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.GwailorFort_EN-US6671653416_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.GwailorFort_EN-US6671653416_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2025-11-23",
-      "copyright": "Leshan Giant Buddha, Sichuan, China (© www.anotherdayattheoffice.org/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.MadgascarAmmonite_EN-US6525238032_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.MadgascarAmmonite_EN-US6525238032_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.MadgascarAmmonite_EN-US6525238032_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 7,
   "pageSize": 42,
-  "total": 2049,
+  "total": 2050,
   "totalPages": 49,
   "hasMore": true
 }

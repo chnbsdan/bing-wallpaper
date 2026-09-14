@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-02-15",
+      "copyright": "Humpback whales in Monterey Bay, California (© Kiliii Fish/Cavan Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.PresidentsDay_EN-US6598155144_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.PresidentsDay_EN-US6598155144_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.PresidentsDay_EN-US6598155144_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-02-14",
       "copyright": "Bleeding hearts (© Dorene Hookey/Cavan Images)",
       "jpg": "https://cn.bing.com/th?id=OHR.MontereyHumpbacks_EN-US6328970690_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.ImpalaRooibok_EN-US6797453661_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.ImpalaRooibok_EN-US6797453661_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.ImpalaRooibok_EN-US6797453661_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2026-01-04",
-      "copyright": "Staubbach Falls at Lauterbrunnen, Canton of Bern, Switzerland (© pongnathee kluaythong/Getty Images)",
-      "jpg": "https://cn.bing.com/th?id=OHR.KingMountain_EN-US6730743729_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.KingMountain_EN-US6730743729_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.KingMountain_EN-US6730743729_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 6,
   "pageSize": 42,
-  "total": 2049,
+  "total": 2050,
   "totalPages": 49,
   "hasMore": true
 }
