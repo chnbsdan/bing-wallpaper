@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-09-16",
+      "copyright": "桑特奈葡萄酒产区葡萄园中的索林风车，伯恩丘，勃艮第，法国 (© Marco Bottigelli/Getty Images)",
+      "jpg": "https://cn.bing.com/th?id=OHR.Santenay_ZH-CN5676942384_UHD.jpg",
+      "webp": "https://cn.bing.com/th?id=OHR.Santenay_ZH-CN5676942384_UHD.jpg",
+      "thumb": "https://cn.bing.com/th?id=OHR.Santenay_ZH-CN5676942384_1920x1080.jpg&w=800&h=450"
+    },
+    {
       "date": "2026-09-15",
       "copyright": "斯瓦尔巴群岛玩耍的北极熊幼崽，挪威 (© Danny Green/Nature Picture Library)",
       "jpg": "https://cn.bing.com/th?id=OHR.IcyCubs_ZH-CN5287408951_UHD.jpg",
@@ -286,18 +293,11 @@
       "jpg": "https://cn.bing.com/th?id=OHR.MaraCrossing_ZH-CN8816902094_UHD.jpg",
       "webp": "https://cn.bing.com/th?id=OHR.MaraCrossing_ZH-CN8816902094_UHD.jpg",
       "thumb": "https://cn.bing.com/th?id=OHR.MaraCrossing_ZH-CN8816902094_1920x1080.jpg&w=800&h=450"
-    },
-    {
-      "date": "2026-08-04",
-      "copyright": "非斯皇宫装饰华丽的大门，摩洛哥 (© cgst26/Shutterstock)",
-      "jpg": "https://cn.bing.com/th?id=OHR.FezMorocco_ZH-CN7662339428_UHD.jpg",
-      "webp": "https://cn.bing.com/th?id=OHR.FezMorocco_ZH-CN7662339428_UHD.jpg",
-      "thumb": "https://cn.bing.com/th?id=OHR.FezMorocco_ZH-CN7662339428_1920x1080.jpg&w=800&h=450"
     }
   ],
   "page": 1,
   "pageSize": 42,
-  "total": 2051,
+  "total": 2052,
   "totalPages": 49,
   "hasMore": true
 }
